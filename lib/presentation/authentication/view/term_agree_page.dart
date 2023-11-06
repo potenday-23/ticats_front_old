@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tickets/app/config/routes/route_path.dart';
-import 'package:tickets/presentation/authentication/controller/register_controller.dart';
 import 'package:tickets/presentation/widget/tickets_button.dart';
 
+import '../controller/register_controller.dart';
 import 'term_detail_page.dart';
+import 'widget/register_app_bar.dart';
 
 class TermAgreePage extends GetView<RegisterController> {
   const TermAgreePage({super.key});
@@ -14,20 +14,7 @@ class TermAgreePage extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        toolbarHeight: 56.h,
-        leadingWidth: 80.w,
-        leading: Row(
-          children: [
-            SizedBox(width: 24.w),
-            GestureDetector(
-              onTap: () => Get.back(),
-              child: SvgPicture.asset('assets/icons/arrow_left.svg', width: 24.w, height: 24.h),
-            ),
-          ],
-        ),
-      ),
+      appBar: const RegisterAppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 26.w),
         child: Column(
@@ -210,7 +197,7 @@ class TermAgreePage extends GetView<RegisterController> {
                 TicketsButton(
                   "다음",
                   color: controller.isRequiredAgree ? const Color(0xFF007AFF) : const Color(0xFFC7C7CC),
-                  onTap: controller.isRequiredAgree ? () {} : null,
+                  onTap: controller.isRequiredAgree ? () => Get.toNamed(RoutePath.requestPermssion) : null,
                 ),
               ]);
             }),
