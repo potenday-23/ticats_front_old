@@ -1,4 +1,4 @@
-package com.example.tickets
+package com.potatoes.tickets
 
 import io.flutter.embedding.android.FlutterActivity
 
