@@ -1,6 +1,10 @@
+// ignore_for_file: library_prefixes
+
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
+import 'package:the_apple_sign_in/the_apple_sign_in.dart';
+import 'package:the_apple_sign_in/scope.dart' as AppleScope;
 
 class AuthService extends GetxService {
   static AuthService get to => Get.find();
@@ -43,6 +47,28 @@ class AuthService extends GetxService {
     } catch (error) {
       print('사용자 정보 요청 실패 $error');
       return;
+    }
+  }
+
+  Future<void> loginWithApple() async {
+    if (await TheAppleSignIn.isAvailable()) {
+      final AuthorizationResult result = await TheAppleSignIn.performRequests([
+        const AppleIdRequest(requestedScopes: [AppleScope.Scope.email])
+      ]);
+
+      switch (result.status) {
+        case AuthorizationStatus.authorized:
+          print(result.credential!.user);
+          break;
+        case AuthorizationStatus.error:
+          print('애플 로그인 오류 : ${result.error!.localizedDescription}');
+          break;
+        case AuthorizationStatus.cancelled:
+          print("취소!!!");
+          break;
+      }
+    } else {
+      print('애플 로그인을 지원하지 않는 기기입니다.');
     }
   }
 }
