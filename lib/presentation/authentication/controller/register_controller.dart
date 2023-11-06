@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class RegisterController extends GetxController {
   bool get isAllAgree => isAgree1.value && isAgree2.value && isAgree3.value && isAgree4.value;
@@ -20,6 +21,17 @@ class RegisterController extends GetxController {
       isAgree2.value = false;
       isAgree3.value = false;
       isAgree4.value = false;
+    }
+  }
+
+  Future<bool> requestPhotoPermission() async {
+    await Permission.camera.request();
+    await Permission.photos.request();
+
+    if (await Permission.camera.isGranted && await Permission.photos.isGranted) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

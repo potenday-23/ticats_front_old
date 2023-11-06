@@ -15,6 +15,7 @@ dependencies:
   flutter_svg: ^2.0.9
   get: ^4.6.6
   kakao_flutter_sdk_user: ^1.6.1
+  permission_handler: ^11.0.1
   the_apple_sign_in: ^1.1.1
 
 dev_dependencies:
