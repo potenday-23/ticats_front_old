@@ -31,6 +31,8 @@ class MainApp extends StatelessWidget {
           theme: ThemeData(
             fontFamily: 'SUIT',
             useMaterial3: true,
+            appBarTheme: const AppBarTheme(backgroundColor: Colors.white, elevation: 0.0),
+            scaffoldBackgroundColor: Colors.white,
           ),
           initialBinding: AppBinding(),
           initialRoute: RoutePath.login,
