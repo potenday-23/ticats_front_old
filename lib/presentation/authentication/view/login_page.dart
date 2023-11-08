@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
-import 'package:tickets/app/config/routes/route_path.dart';
 import 'package:tickets/app/service/auth_service.dart';
 
 class LoginPage extends StatelessWidget {
@@ -39,10 +36,8 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 50.h),
             _SSOButtonWidget(
               onTap: () async {
-                User? user = await AuthService.to.loginWithKakao();
-                if (user != null) {
-                  Get.toNamed(RoutePath.termAgree);
-                }
+                await AuthService.to.loginWithKakao();
+                await AuthService.to.login();
               },
               "카카오로 시작하기",
               color: const Color(0xFFFFE300),
@@ -50,7 +45,10 @@ class LoginPage extends StatelessWidget {
             ),
             SizedBox(height: 16.h),
             _SSOButtonWidget(
-              onTap: () async => await AuthService.to.loginWithApple(),
+              onTap: () async {
+                await AuthService.to.loginWithApple();
+                await AuthService.to.login();
+              },
               "애플로 시작하기",
               color: Colors.black,
               textColor: Colors.white,

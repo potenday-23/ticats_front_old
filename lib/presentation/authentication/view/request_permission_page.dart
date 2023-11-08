@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
-import 'package:tickets/presentation/home/view/ticket_page.dart';
+import 'package:tickets/app/config/routes/route_path.dart';
 import 'package:tickets/presentation/widget/tickets_button.dart';
 
 import '../controller/register_controller.dart';
@@ -40,11 +40,12 @@ class RequestPermissionPage extends StatelessWidget {
               Text(
                 "티켓 이미지 등록 등 서비스 이용 시,\n이미지 등 콘텐츠 접근",
                 style: AppTypeFace.xsmallSemiBold.copyWith(color: AppColor.gray63),
+                textAlign: TextAlign.center,
               ),
               const Spacer(),
               TicketsButton("다음", onTap: () async {
-                bool result = await Get.find<RegisterController>().requestGalleryPermission();
-                Get.to(() => TicketPage());
+                await Get.find<RegisterController>().requestGalleryPermission();
+                Get.toNamed(RoutePath.registerProfile);
               }),
               SizedBox(height: 86.h),
             ],
