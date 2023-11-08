@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tickets/app/config/app_typeface.dart';
 
 enum TermType {
   locationTermOfUse("서비스 알림 수신 동의", fileName: "location_term_of_use"),
@@ -33,7 +34,7 @@ class TermDetailPage extends StatelessWidget {
             child: GestureDetector(onTap: () => Get.back(), child: Icon(Icons.close, size: 24.w)),
           ),
         ],
-        title: Text(termType.termName, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700)),
+        title: Text(termType.termName, style: AppTypeFace.smallBold),
       ),
       body: FutureBuilder(
         future: rootBundle.loadString("assets/terms/${termType.fileName}.md"),
