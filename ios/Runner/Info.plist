@@ -66,9 +66,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Used to make photo tickets.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Used to make photo tickets.</string>
+	<string>Used to make and save photo tickets.</string>
 </dict>
 </plist>
