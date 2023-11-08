@@ -21,6 +21,7 @@ class RegisterController extends GetxController {
 
   // Category
   RxList<String> categoryList = <String>[].obs;
+
   Future<void> saveCategories() async {
     try {
       var data = FormData.fromMap({
@@ -46,7 +47,7 @@ class RegisterController extends GetxController {
       );
 
       if (response.statusCode == 201) {
-        Get.toNamed(RoutePath.home);
+        Get.offAllNamed(RoutePath.home);
       }
     } on DioException catch (e) {
       if (e.response != null) {
