@@ -7,6 +7,8 @@ import 'package:tickets/presentation/authentication/view/request_permission_page
 import 'package:tickets/presentation/authentication/view/select_category_page.dart';
 import 'package:tickets/presentation/authentication/view/term_agree_page.dart';
 import 'package:tickets/presentation/authentication/view/term_detail_page.dart';
+import 'package:tickets/presentation/main/controller/main_binding.dart';
+import 'package:tickets/presentation/main/view/main_page.dart';
 
 class Routes {
   static List<GetPage> routes = [
@@ -38,6 +40,12 @@ class Routes {
       name: RoutePath.termDetail,
       page: () => TermDetailPage(),
     ),
+
+    // Main
+    GetPage(
+      name: RoutePath.main,
+      page: () => const MainPage(),
+      binding: HomeBinding(),
     ),
   ];
 }

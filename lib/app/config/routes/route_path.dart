@@ -9,4 +9,6 @@ class RoutePath {
   static const String termAgree = '/termAgree';
   static const String termDetail = '/termDetail';
 
+  // Main
+  static const String main = '/main';
 }

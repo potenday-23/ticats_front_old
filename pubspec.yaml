@@ -41,6 +41,7 @@ flutter:
 
   assets:
     - .env
+    - assets/cats/
     - assets/categories/
     - assets/icons/
     - assets/terms/
