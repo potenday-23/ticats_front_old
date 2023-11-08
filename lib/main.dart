@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:tickets/app/config/app_binding.dart';
+import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/routes/route_path.dart';
 import 'package:tickets/app/config/routes/routes.dart';
 
@@ -31,6 +32,7 @@ class MainApp extends StatelessWidget {
           theme: ThemeData(
             fontFamily: 'SUIT',
             useMaterial3: true,
+            colorSchemeSeed: AppColor.primaryNormal,
             appBarTheme: const AppBarTheme(backgroundColor: Colors.white, elevation: 0.0),
             scaffoldBackgroundColor: Colors.white,
           ),
