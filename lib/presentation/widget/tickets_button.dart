@@ -4,10 +4,11 @@ import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
 
 class TicketsButton extends StatelessWidget {
-  const TicketsButton(this.text, {super.key, this.color, this.textColor, required this.onTap});
+  const TicketsButton(this.text, {super.key, this.color, this.gradient, this.textColor, required this.onTap});
 
   final String text;
   final Color? color;
+  final LinearGradient? gradient;
   final Color? textColor;
   final VoidCallback? onTap;
 
@@ -21,6 +22,7 @@ class TicketsButton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.r),
           color: color ?? AppColor.systemBlue,
+          gradient: gradient,
         ),
         child: Center(
           child: Text(

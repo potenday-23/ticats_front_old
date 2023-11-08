@@ -4,6 +4,7 @@ import 'package:tickets/presentation/authentication/controller/login_binding.dar
 import 'package:tickets/presentation/authentication/view/login_page.dart';
 import 'package:tickets/presentation/authentication/view/register_profile_page.dart';
 import 'package:tickets/presentation/authentication/view/request_permission_page.dart';
+import 'package:tickets/presentation/authentication/view/select_category_page.dart';
 import 'package:tickets/presentation/authentication/view/term_agree_page.dart';
 import 'package:tickets/presentation/authentication/view/term_detail_page.dart';
 
@@ -24,6 +25,10 @@ class Routes {
     GetPage(
       name: RoutePath.requestPermssion,
       page: () => const RequestPermissionPage(),
+    ),
+    GetPage(
+      name: RoutePath.selectCategory,
+      page: () => const SelectCategoryPage(),
     ),
     GetPage(
       name: RoutePath.termAgree,
