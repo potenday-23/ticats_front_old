@@ -6,6 +6,8 @@ import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:tickets/app/config/app_const.dart';
+import 'package:tickets/app/config/routes/route_path.dart';
 import 'package:tickets/app/service/auth_service.dart';
 
 import '../data/model/user_model.dart';
@@ -15,6 +17,47 @@ class RegisterController extends GetxController {
   void onClose() {
     nicknameController.dispose();
     super.onClose();
+  }
+
+  // Category
+  RxList<String> categoryList = <String>[].obs;
+  Future<void> saveCategories() async {
+    try {
+      var data = FormData.fromMap({
+        'request': MultipartFile.fromString(
+          jsonEncode({
+            'socialId': AuthService.to.userOAuth!.socialId,
+            'socialType': AuthService.to.userOAuth!.socialType,
+          }),
+          contentType: MediaType('application', 'json'),
+        ),
+        'categorys': MultipartFile.fromString(
+          jsonEncode(categoryList),
+          contentType: MediaType('application', 'json'),
+        ),
+      });
+
+      var response = await Dio().post(
+        '${AppConst.apiUrl}/auth/login',
+        options: Options(
+          headers: {'Content-Type': 'multipart/form-data', 'Accept': '*/*'},
+        ),
+        data: data,
+      );
+
+      if (response.statusCode == 201) {
+        Get.toNamed(RoutePath.home);
+      }
+    } on DioException catch (e) {
+      if (e.response != null) {
+        print(e.response!.data);
+        print(e.response!.headers);
+      } else {
+        print(e.requestOptions);
+        print(e.message);
+      }
+      Get.snackbar("에러!", "관심사 저장에 실패하였습니다.\n관리자에게 문의해주세요.");
+    }
   }
 
   // Gallery Permission
@@ -71,13 +114,14 @@ class RegisterController extends GetxController {
             'nickname': nicknameController.text,
             'socialId': AuthService.to.userOAuth!.socialId,
             'socialType': AuthService.to.userOAuth!.socialType,
+            'profileUrl': "",
             'pushAgree': isAgree3.value ? "AGREE" : "DISAGREE",
             'marketingAgree': isAgree4.value ? "AGREE" : "DISAGREE",
           }),
           contentType: MediaType('application', 'json'),
         ),
         'categorys': MultipartFile.fromString(
-          '["뮤지컬", "드라마"]',
+          '',
           contentType: MediaType('application', 'json'),
         ),
       });
@@ -90,7 +134,7 @@ class RegisterController extends GetxController {
       }
 
       var response = await Dio().post(
-        'http://13.124.32.19:8080/api/auth/login',
+        '${AppConst.apiUrl}/auth/login',
         options: Options(
           headers: {'Content-Type': 'multipart/form-data', 'Accept': '*/*'},
         ),
@@ -101,7 +145,7 @@ class RegisterController extends GetxController {
         await AuthService.to.setUser(UserModel.fromJson(response.data));
         await AuthService.to.setUserOAuth(AuthService.to.userOAuth!);
 
-        Get.snackbar("성공!", "회원가입 성공");
+        Get.toNamed(RoutePath.selectCategory);
       }
     } on DioException catch (e) {
       if (e.response != null) {

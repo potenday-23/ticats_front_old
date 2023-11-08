@@ -10,6 +10,7 @@ class RegisterAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
+      scrolledUnderElevation: 0,
       toolbarHeight: 56.h,
       leadingWidth: 80.w,
       leading: Row(
