@@ -30,19 +30,20 @@ class RequestPermissionPage extends StatelessWidget {
               ),
               SizedBox(height: 36.h),
               SvgPicture.asset(
-                'assets/icons/camera.svg',
-                width: 60.w,
-                height: 60.w,
+                'assets/icons/gallery.svg',
+                width: 40.w,
+                height: 40.w,
               ),
-              Text("카메라 / 사진첩", style: AppTypeFace.xsmallSemiBold.copyWith(color: AppColor.gray48)),
+              SizedBox(height: 8.h),
+              Text("갤러리", style: AppTypeFace.xsmallSemiBold.copyWith(color: AppColor.gray48)),
               SizedBox(height: 8.h),
               Text(
-                "티켓 이미지 등록 등 서비스 이용 시,\n사진 촬영과 이미지 등 콘텐츠 접근",
+                "티켓 이미지 등록 등 서비스 이용 시,\n이미지 등 콘텐츠 접근",
                 style: AppTypeFace.xsmallSemiBold.copyWith(color: AppColor.gray63),
               ),
               const Spacer(),
               TicketsButton("다음", onTap: () async {
-                bool result = await Get.find<RegisterController>().requestPhotoPermission();
+                bool result = await Get.find<RegisterController>().requestGalleryPermission();
                 Get.to(() => TicketPage());
               }),
               SizedBox(height: 86.h),

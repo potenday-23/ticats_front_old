@@ -24,14 +24,9 @@ class RegisterController extends GetxController {
     }
   }
 
-  Future<bool> requestPhotoPermission() async {
-    await Permission.camera.request();
+  Future<bool> requestGalleryPermission() async {
     await Permission.photos.request();
 
-    if (await Permission.camera.isGranted && await Permission.photos.isGranted) {
-      return true;
-    } else {
-      return false;
-    }
+    return await Permission.photos.isGranted;
   }
 }
