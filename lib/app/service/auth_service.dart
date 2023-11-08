@@ -90,7 +90,7 @@ class AuthService extends GetxService {
         options: Options(headers: {'Content-Type': 'multipart/form-data', 'Accept': '*/*'}),
         data: FormData.fromMap({
           'request': MultipartFile.fromString(
-            jsonEncode({'socialType': "KAKAO", 'socialId': "test"}),
+            jsonEncode({'socialId': userOAuth!.socialId, 'socialType': userOAuth!.socialType}),
             contentType: MediaType('application', 'json'),
           ),
         }),
