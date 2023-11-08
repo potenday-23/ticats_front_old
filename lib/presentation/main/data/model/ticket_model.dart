@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tickets/presentation/authentication/data/model/user_model.dart';
-import 'package:tickets/presentation/home/data/model/category_model.dart';
+
+import 'category_model.dart';
 
 part 'ticket_model.freezed.dart';
 part 'ticket_model.g.dart';

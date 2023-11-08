@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:tickets/app/config/app_typeface.dart';
-import 'package:tickets/presentation/home/data/model/ticket_model.dart';
 
+import '../main/data/model/ticket_model.dart';
 import 'masked_image.dart';
 
 class Ticket1Small extends StatelessWidget {

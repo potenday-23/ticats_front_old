@@ -47,7 +47,7 @@ class RegisterController extends GetxController {
       );
 
       if (response.statusCode == 201) {
-        Get.offAllNamed(RoutePath.home);
+        Get.offAllNamed(RoutePath.main);
       }
     } on DioException catch (e) {
       if (e.response != null) {

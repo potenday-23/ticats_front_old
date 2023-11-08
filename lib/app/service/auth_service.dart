@@ -102,7 +102,7 @@ class AuthService extends GetxService {
         await setUser(_user!);
         await setUserOAuth(_userOAuth!);
 
-        Get.offAllNamed(RoutePath.home);
+        Get.offAllNamed(RoutePath.main);
       }
     } on DioException catch (e) {
       if (e.response != null) {
