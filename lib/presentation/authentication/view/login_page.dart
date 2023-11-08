@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
+import 'package:tickets/app/config/app_color.dart';
+import 'package:tickets/app/config/app_typeface.dart';
 import 'package:tickets/app/config/routes/route_path.dart';
 import 'package:tickets/app/service/auth_service.dart';
 
@@ -26,13 +28,13 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 12.h),
             Text(
               "티켓츠에 오신 것을\n환영합니다!",
-              style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w700),
+              style: AppTypeFace.mediumBold,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 12.h),
             Text(
               "나만의 문화생활 티켓을 꾸며보세요",
-              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: const Color(0xFF8E8E93)),
+              style: AppTypeFace.smallSemiBold.copyWith(color: AppColor.gray8E),
             ),
             SizedBox(height: 50.h),
             _SSOButtonWidget(
@@ -58,7 +60,7 @@ class LoginPage extends StatelessWidget {
             _SSOButtonWidget(
               "로그인 없이 둘러보기",
               onTap: () {},
-              color: const Color(0xFFC7C7CC),
+              color: AppColor.grayC7,
               textColor: Colors.white,
             ),
           ],
@@ -91,7 +93,7 @@ class _SSOButtonWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (icon != null) SvgPicture.asset("assets/icons/$icon"),
-              Text(text, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700, color: textColor ?? Colors.black)),
+              Text(text, style: AppTypeFace.smallBold.copyWith(color: textColor ?? Colors.black)),
             ],
           ),
         ),

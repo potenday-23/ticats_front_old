@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tickets/app/config/app_color.dart';
+import 'package:tickets/app/config/app_typeface.dart';
 import 'package:tickets/app/config/routes/route_path.dart';
 import 'package:tickets/presentation/widget/tickets_button.dart';
 
@@ -21,7 +23,7 @@ class TermAgreePage extends GetView<RegisterController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 36.h),
-            Text("원활한 서비스 이용을 위해\n약관에 동의해주세요.", style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700)),
+            Text("원활한 서비스 이용을 위해\n약관에 동의해주세요.", style: AppTypeFace.smallBold),
             SizedBox(height: 26.h),
             Obx(() {
               return Column(children: [
@@ -38,7 +40,7 @@ class TermAgreePage extends GetView<RegisterController> {
                               width: 18.w,
                               height: 18.w,
                               child: Checkbox(
-                                activeColor: const Color(0xFF007AFF),
+                                activeColor: AppColor.systemBlue,
                                 value: controller.isAllAgree,
                                 onChanged: (value) {
                                   controller.setAllAgree();
@@ -70,7 +72,7 @@ class TermAgreePage extends GetView<RegisterController> {
                               width: 18.w,
                               height: 18.w,
                               child: Checkbox(
-                                activeColor: const Color(0xFF007AFF),
+                                activeColor: AppColor.systemBlue,
                                 value: controller.isAgree1.value,
                                 onChanged: (value) {
                                   controller.isAgree1.value = !controller.isAgree1.value;
@@ -81,13 +83,13 @@ class TermAgreePage extends GetView<RegisterController> {
                             ),
                           ),
                           SizedBox(width: 12.w),
-                          Text("[필수] 서비스 이용약관", style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500)),
+                          Text("[필수] 서비스 이용약관", style: AppTypeFace.xsmallMedium),
                         ],
                       ),
                     ),
                     GestureDetector(
                       onTap: () => Get.toNamed(RoutePath.termDetail, arguments: TermType.termOfUse),
-                      child: Text("보기", style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, color: const Color(0xFF8E8E93))),
+                      child: Text("보기", style: AppTypeFace.xsmallMedium.copyWith(color: AppColor.gray8E)),
                     ),
                   ],
                 ),
@@ -104,7 +106,7 @@ class TermAgreePage extends GetView<RegisterController> {
                               width: 18.w,
                               height: 18.w,
                               child: Checkbox(
-                                activeColor: const Color(0xFF007AFF),
+                                activeColor: AppColor.systemBlue,
                                 value: controller.isAgree2.value,
                                 onChanged: (value) {
                                   controller.isAgree2.value = !controller.isAgree2.value;
@@ -115,13 +117,13 @@ class TermAgreePage extends GetView<RegisterController> {
                             ),
                           ),
                           SizedBox(width: 12.w),
-                          Text("[필수] 개인정보 처리방침 및 수집이용 동의", style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500)),
+                          Text("[필수] 개인정보 처리방침 및 수집이용 동의", style: AppTypeFace.xsmallMedium),
                         ],
                       ),
                     ),
                     GestureDetector(
                       onTap: () => Get.toNamed(RoutePath.termDetail, arguments: TermType.privacyPolicy),
-                      child: Text("보기", style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, color: const Color(0xFF8E8E93))),
+                      child: Text("보기", style: AppTypeFace.xsmallMedium.copyWith(color: AppColor.gray8E)),
                     ),
                   ],
                 ),
@@ -138,7 +140,7 @@ class TermAgreePage extends GetView<RegisterController> {
                               width: 18.w,
                               height: 18.w,
                               child: Checkbox(
-                                activeColor: const Color(0xFF007AFF),
+                                activeColor: AppColor.systemBlue,
                                 value: controller.isAgree3.value,
                                 onChanged: (value) {
                                   controller.isAgree3.value = !controller.isAgree3.value;
@@ -149,13 +151,13 @@ class TermAgreePage extends GetView<RegisterController> {
                             ),
                           ),
                           SizedBox(width: 12.w),
-                          Text("[선택] 서비스 알림 수신 동의", style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500)),
+                          Text("[선택] 서비스 알림 수신 동의", style: AppTypeFace.xsmallMedium),
                         ],
                       ),
                     ),
                     GestureDetector(
                       onTap: () => Get.toNamed(RoutePath.termDetail, arguments: TermType.locationTermOfUse),
-                      child: Text("보기", style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, color: const Color(0xFF8E8E93))),
+                      child: Text("보기", style: AppTypeFace.xsmallMedium.copyWith(color: AppColor.gray8E)),
                     ),
                   ],
                 ),
@@ -172,7 +174,7 @@ class TermAgreePage extends GetView<RegisterController> {
                               width: 18.w,
                               height: 18.w,
                               child: Checkbox(
-                                activeColor: const Color(0xFF007AFF),
+                                activeColor: AppColor.systemBlue,
                                 value: controller.isAgree4.value,
                                 onChanged: (value) {
                                   controller.isAgree4.value = !controller.isAgree4.value;
@@ -183,20 +185,20 @@ class TermAgreePage extends GetView<RegisterController> {
                             ),
                           ),
                           SizedBox(width: 12.w),
-                          Text("[선택] 마케팅 정보 수신 및 이용 동의", style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500)),
+                          Text("[선택] 마케팅 정보 수신 및 이용 동의", style: AppTypeFace.xsmallMedium),
                         ],
                       ),
                     ),
                     GestureDetector(
                       onTap: () => Get.toNamed(RoutePath.termDetail, arguments: TermType.marketingConsent),
-                      child: Text("보기", style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, color: const Color(0xFF8E8E93))),
+                      child: Text("보기", style: AppTypeFace.xsmallMedium.copyWith(color: AppColor.gray8E)),
                     ),
                   ],
                 ),
                 SizedBox(height: 195.h),
                 TicketsButton(
                   "다음",
-                  color: controller.isRequiredAgree ? const Color(0xFF007AFF) : const Color(0xFFC7C7CC),
+                  color: controller.isRequiredAgree ? AppColor.systemBlue : AppColor.grayC7,
                   onTap: controller.isRequiredAgree ? () => Get.toNamed(RoutePath.requestPermssion) : null,
                 ),
               ]);
