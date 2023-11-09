@@ -73,17 +73,31 @@ class Ticket1Small extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 54.w),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(ticket.location ?? "", style: AppTypeFace.smallSemiBold),
-                          SizedBox(width: 8.w),
-                          _RatingStarWidget(ticket.rating),
-                        ],
+                      SizedBox(
+                        width: 254.w,
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(ticket.category.name, style: AppTypeFace.smallSemiBold),
+                                SizedBox(width: 8.w),
+                                _RatingStarWidget(ticket.rating),
+                              ],
+                            ),
+                            SizedBox(height: 8.w),
+                            SizedBox(
+                                width: 254.w,
+                                height: 68.w,
+                                child: Text(
+                                  ticket.memo ?? "",
+                                  style: AppTypeFace.xsmallSmall,
+                                  textAlign: TextAlign.center,
+                                )),
+                          ],
+                        ),
                       ),
-                      SizedBox(height: 8.w),
-                      SizedBox(width: 238.w, height: 68.w, child: Text(ticket.memo ?? "", style: AppTypeFace.xsmallSmall)),
                     ],
                   ),
                 ),
@@ -126,14 +140,41 @@ class Ticket1Medium extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        width: 296.w,
-                        height: 344.w,
-                        child: MaskedImage(
-                          imageUrl: ticket.imageUrl,
-                          imagePath: ticket.imagePath,
-                          mask: 'assets/tickets/mask_1_medium.png',
-                        ),
+                      Stack(
+                        children: [
+                          SizedBox(
+                            width: 296.w,
+                            height: 344.w,
+                            child: MaskedImage(
+                              imageUrl: ticket.imageUrl,
+                              imagePath: ticket.imagePath,
+                              mask: 'assets/tickets/mask_1_medium.png',
+                            ),
+                          ),
+                          Positioned.fill(
+                            bottom: 8.w,
+                            child: Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    DateFormat("yy.MM.dd").format(ticket.ticketDate),
+                                    style: AppTypeFace.xsmallSmall.copyWith(color: ColorType.values[int.parse(ticket.color)].color),
+                                  ),
+                                  SizedBox(height: 2.w),
+                                  Text(
+                                    ticket.title,
+                                    style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w800,
+                                        color: ColorType.values[int.parse(ticket.color)].color),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(height: 60.w),
                       Column(
@@ -225,7 +266,8 @@ class Ticket1Large extends StatelessWidget {
                         width: 240.w,
                         child: Column(
                           children: [
-                            Text(ticket.title, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w700)),
+                            SizedBox(
+                                height: 57.w, child: Text(ticket.title, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w700))),
                             SizedBox(height: 11.w),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -315,17 +357,31 @@ class Ticket2Small extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 50.w),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(ticket.location ?? "", style: AppTypeFace.smallSemiBold),
-                          SizedBox(width: 8.w),
-                          _RatingStarWidget(ticket.rating),
-                        ],
+                      SizedBox(
+                        width: 254.w,
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(ticket.category.name, style: AppTypeFace.smallSemiBold),
+                                SizedBox(width: 8.w),
+                                _RatingStarWidget(ticket.rating),
+                              ],
+                            ),
+                            SizedBox(height: 8.w),
+                            SizedBox(
+                                width: 254.w,
+                                height: 68.w,
+                                child: Text(
+                                  ticket.memo ?? "",
+                                  style: AppTypeFace.xsmallSmall,
+                                  textAlign: TextAlign.center,
+                                )),
+                          ],
+                        ),
                       ),
-                      SizedBox(height: 8.w),
-                      SizedBox(width: 238.w, height: 68.w, child: Text(ticket.memo ?? "", style: AppTypeFace.xsmallSmall)),
                     ],
                   ),
                 ),
@@ -371,10 +427,37 @@ class Ticket2Medium extends StatelessWidget {
                       SizedBox(
                         width: 304.w,
                         height: 354.w,
-                        child: MaskedImage(
-                          imageUrl: ticket.imageUrl,
-                          imagePath: ticket.imagePath,
-                          mask: 'assets/tickets/mask_2_medium.png',
+                        child: Stack(
+                          children: [
+                            MaskedImage(
+                              imageUrl: ticket.imageUrl,
+                              imagePath: ticket.imagePath,
+                              mask: 'assets/tickets/mask_2_medium.png',
+                            ),
+                            Positioned.fill(
+                              bottom: 24.w,
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      DateFormat("yy.MM.dd").format(ticket.ticketDate),
+                                      style: AppTypeFace.xsmallSmall.copyWith(color: ColorType.values[int.parse(ticket.color)].color),
+                                    ),
+                                    SizedBox(height: 2.w),
+                                    Text(
+                                      ticket.title,
+                                      style: TextStyle(
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeight.w800,
+                                          color: ColorType.values[int.parse(ticket.color)].color),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(height: 50.w),
@@ -452,11 +535,14 @@ class Ticket2Large extends StatelessWidget {
                               alignment: Alignment.topCenter,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 7.w),
-                                child: Text(ticket.title,
-                                    style: TextStyle(
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w800,
-                                        color: ColorType.values[int.parse(ticket.color)].color)),
+                                child: Text(
+                                  ticket.title,
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w800,
+                                    color: ColorType.values[int.parse(ticket.color)].color,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -467,7 +553,8 @@ class Ticket2Large extends StatelessWidget {
                         width: 240.w,
                         child: Column(
                           children: [
-                            Text(ticket.title, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w700)),
+                            SizedBox(
+                                height: 57.w, child: Text(ticket.title, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w700))),
                             SizedBox(height: 11.w),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -558,17 +645,31 @@ class Ticket3Small extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 45.w),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(ticket.location ?? "", style: AppTypeFace.smallSemiBold),
-                          SizedBox(width: 8.w),
-                          _RatingStarWidget(ticket.rating),
-                        ],
+                      SizedBox(
+                        width: 254.w,
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(ticket.category.name, style: AppTypeFace.smallSemiBold),
+                                SizedBox(width: 8.w),
+                                _RatingStarWidget(ticket.rating),
+                              ],
+                            ),
+                            SizedBox(height: 8.w),
+                            SizedBox(
+                                width: 254.w,
+                                height: 51.w,
+                                child: Text(
+                                  ticket.memo ?? "",
+                                  style: AppTypeFace.xsmallSmall,
+                                  textAlign: TextAlign.center,
+                                )),
+                          ],
+                        ),
                       ),
-                      SizedBox(height: 8.w),
-                      SizedBox(width: 238.w, height: 51.w, child: Text(ticket.memo ?? "", style: AppTypeFace.xsmallSmall)),
                     ],
                   ),
                 ),
@@ -611,25 +712,55 @@ class Ticket3Medium extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        width: 302.w,
-                        height: 345.w,
-                        child: MaskedImage(
-                          imageUrl: ticket.imageUrl,
-                          imagePath: ticket.imagePath,
-                          mask: 'assets/tickets/mask_3_medium.png',
-                        ),
+                      Stack(
+                        children: [
+                          SizedBox(
+                            width: 302.w,
+                            height: 345.w,
+                            child: MaskedImage(
+                              imageUrl: ticket.imageUrl,
+                              imagePath: ticket.imagePath,
+                              mask: 'assets/tickets/mask_3_medium.png',
+                            ),
+                          ),
+                          Positioned.fill(
+                            bottom: 24.w,
+                            child: Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    DateFormat("yy.MM.dd").format(ticket.ticketDate),
+                                    style: AppTypeFace.xsmallSmall.copyWith(color: ColorType.values[int.parse(ticket.color)].color),
+                                  ),
+                                  SizedBox(height: 2.w),
+                                  Text(
+                                    ticket.title,
+                                    style: TextStyle(
+                                        fontSize: 18.sp,
+                                        fontWeight: FontWeight.w800,
+                                        color: ColorType.values[int.parse(ticket.color)].color),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(height: 31.w),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(left: 16.w),
+                            padding: EdgeInsets.only(left: 30.w),
                             child: _RatingStarWidget(ticket.rating),
                           ),
                           SizedBox(height: 11.w),
-                          SizedBox(width: 139.w, height: 68.w, child: Text(ticket.memo ?? "", style: AppTypeFace.xsmallSmall)),
+                          Padding(
+                            padding: EdgeInsets.only(left: 14.w),
+                            child: SizedBox(width: 119.w, height: 52.w, child: Text(ticket.memo ?? "", style: AppTypeFace.xsmallSmall)),
+                          ),
                         ],
                       ),
                     ],
@@ -638,7 +769,7 @@ class Ticket3Medium extends StatelessWidget {
               ),
               Positioned.fill(
                 right: 35.w,
-                bottom: 65.86.w,
+                bottom: 68.86.w,
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: SvgPicture.asset('assets/tickets/barcode.svg', width: 140.w, height: 77.w),
@@ -713,7 +844,12 @@ class Ticket3Large extends StatelessWidget {
                         width: 240.w,
                         child: Column(
                           children: [
-                            Text(ticket.title, style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w700)),
+                            SizedBox(
+                                height: 57.w,
+                                child: Text(
+                                  ticket.title,
+                                  style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w700),
+                                )),
                             SizedBox(height: 11.w),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
