@@ -31,6 +31,7 @@ mixin _$TicketModel {
   String? get location => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
   String? get friend => throw _privateConstructorUsedError;
+  String get color => throw _privateConstructorUsedError;
   String? get ticketType => throw _privateConstructorUsedError;
   String? get layoutType => throw _privateConstructorUsedError;
   bool? get isLike => throw _privateConstructorUsedError;
@@ -62,6 +63,7 @@ abstract class $TicketModelCopyWith<$Res> {
       String? location,
       int? price,
       String? friend,
+      String color,
       String? ticketType,
       String? layoutType,
       bool? isLike,
@@ -97,6 +99,7 @@ class _$TicketModelCopyWithImpl<$Res, $Val extends TicketModel>
     Object? location = freezed,
     Object? price = freezed,
     Object? friend = freezed,
+    Object? color = null,
     Object? ticketType = freezed,
     Object? layoutType = freezed,
     Object? isLike = freezed,
@@ -149,6 +152,10 @@ class _$TicketModelCopyWithImpl<$Res, $Val extends TicketModel>
           ? _value.friend
           : friend // ignore: cast_nullable_to_non_nullable
               as String?,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String,
       ticketType: freezed == ticketType
           ? _value.ticketType
           : ticketType // ignore: cast_nullable_to_non_nullable
@@ -217,6 +224,7 @@ abstract class _$$TicketModelImplCopyWith<$Res>
       String? location,
       int? price,
       String? friend,
+      String color,
       String? ticketType,
       String? layoutType,
       bool? isLike,
@@ -252,6 +260,7 @@ class __$$TicketModelImplCopyWithImpl<$Res>
     Object? location = freezed,
     Object? price = freezed,
     Object? friend = freezed,
+    Object? color = null,
     Object? ticketType = freezed,
     Object? layoutType = freezed,
     Object? isLike = freezed,
@@ -304,6 +313,10 @@ class __$$TicketModelImplCopyWithImpl<$Res>
           ? _value.friend
           : friend // ignore: cast_nullable_to_non_nullable
               as String?,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as String,
       ticketType: freezed == ticketType
           ? _value.ticketType
           : ticketType // ignore: cast_nullable_to_non_nullable
@@ -347,6 +360,7 @@ class _$TicketModelImpl implements _TicketModel {
       required this.location,
       required this.price,
       required this.friend,
+      required this.color,
       required this.ticketType,
       required this.layoutType,
       this.isLike,
@@ -380,6 +394,8 @@ class _$TicketModelImpl implements _TicketModel {
   @override
   final String? friend;
   @override
+  final String color;
+  @override
   final String? ticketType;
   @override
   final String? layoutType;
@@ -394,7 +410,7 @@ class _$TicketModelImpl implements _TicketModel {
 
   @override
   String toString() {
-    return 'TicketModel(id: $id, title: $title, imageUrl: $imageUrl, imagePath: $imagePath, ticketDate: $ticketDate, rating: $rating, memo: $memo, seat: $seat, location: $location, price: $price, friend: $friend, ticketType: $ticketType, layoutType: $layoutType, isLike: $isLike, isPrivate: $isPrivate, category: $category, member: $member)';
+    return 'TicketModel(id: $id, title: $title, imageUrl: $imageUrl, imagePath: $imagePath, ticketDate: $ticketDate, rating: $rating, memo: $memo, seat: $seat, location: $location, price: $price, friend: $friend, color: $color, ticketType: $ticketType, layoutType: $layoutType, isLike: $isLike, isPrivate: $isPrivate, category: $category, member: $member)';
   }
 
   @override
@@ -417,6 +433,7 @@ class _$TicketModelImpl implements _TicketModel {
                 other.location == location) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.friend, friend) || other.friend == friend) &&
+            (identical(other.color, color) || other.color == color) &&
             (identical(other.ticketType, ticketType) ||
                 other.ticketType == ticketType) &&
             (identical(other.layoutType, layoutType) ||
@@ -444,6 +461,7 @@ class _$TicketModelImpl implements _TicketModel {
       location,
       price,
       friend,
+      color,
       ticketType,
       layoutType,
       isLike,
@@ -478,6 +496,7 @@ abstract class _TicketModel implements TicketModel {
       required final String? location,
       required final int? price,
       required final String? friend,
+      required final String color,
       required final String? ticketType,
       required final String? layoutType,
       final bool? isLike,
@@ -510,6 +529,8 @@ abstract class _TicketModel implements TicketModel {
   int? get price;
   @override
   String? get friend;
+  @override
+  String get color;
   @override
   String? get ticketType;
   @override

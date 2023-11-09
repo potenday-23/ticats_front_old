@@ -20,6 +20,7 @@ class TicketModel with _$TicketModel {
     required String? location,
     required int? price,
     required String? friend,
+    required String color,
     required String? ticketType,
     required String? layoutType,
     bool? isLike,

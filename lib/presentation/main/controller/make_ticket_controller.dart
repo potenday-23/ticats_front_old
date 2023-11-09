@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tickets/presentation/main/data/enum/category.dart';
+import 'package:tickets/presentation/main/data/enum/color.dart';
 import 'package:tickets/presentation/main/view/select_ticket_layout_screen.dart';
 
 import '../data/model/category_model.dart';
@@ -32,6 +33,7 @@ class MakeTicketController extends GetxController {
     location: "",
     price: null,
     friend: "",
+    color: ColorType.white.id.toString(),
     ticketType: "",
     layoutType: "",
     category: CategoryModel(id: 0, name: ""),
@@ -47,6 +49,7 @@ class MakeTicketController extends GetxController {
   final TextEditingController friendController = TextEditingController();
   final TextEditingController seatController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
+  final RxInt selectedColor = 0.obs;
 
   Future<void> getImage() async {
     final ImagePicker picker = ImagePicker();
@@ -92,6 +95,7 @@ class MakeTicketController extends GetxController {
       location: locationController.text,
       price: priceController.text.isNotEmpty ? int.parse(priceController.text) : null,
       friend: friendController.text,
+      color: ColorType.white.id.toString(),
       ticketType: "",
       layoutType: "",
       category: CategoryModel(id: selectedCategory.value.index, name: selectedCategory.value.name),

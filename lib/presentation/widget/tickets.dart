@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:tickets/app/config/app_typeface.dart';
+import 'package:tickets/presentation/main/data/enum/color.dart';
 
 import '../main/data/model/ticket_model.dart';
 import 'masked_image.dart';
@@ -52,7 +53,8 @@ class Ticket1Small extends StatelessWidget {
                                 alignment: Alignment.topCenter,
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 7.w),
-                                  child: Text(ticket.title, style: AppTypeFace.xsmallSemiBold.copyWith(color: Colors.white)),
+                                  child: Text(ticket.title,
+                                      style: AppTypeFace.xsmallSemiBold.copyWith(color: ColorType.values[int.parse(ticket.color)].color)),
                                 ),
                               ),
                             ),
@@ -63,7 +65,7 @@ class Ticket1Small extends StatelessWidget {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 9.w),
                                   child: Text(DateFormat("yy.MM.dd").format(ticket.ticketDate),
-                                      style: AppTypeFace.xsmallMedium.copyWith(color: Colors.white)),
+                                      style: AppTypeFace.xsmallMedium.copyWith(color: ColorType.values[int.parse(ticket.color)].color)),
                                 ),
                               ),
                             ),
@@ -208,8 +210,11 @@ class Ticket1Large extends StatelessWidget {
                               alignment: Alignment.topCenter,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 7.w),
-                                child:
-                                    Text(ticket.title, style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w800, color: Colors.white)),
+                                child: Text(ticket.title,
+                                    style: TextStyle(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w800,
+                                        color: ColorType.values[int.parse(ticket.color)].color)),
                               ),
                             ),
                           ),
@@ -248,6 +253,7 @@ class Ticket2Small extends StatelessWidget {
   const Ticket2Small(this.ticket, {super.key, this.width, this.height});
 
   final TicketModel ticket;
+
   final double? width;
   final double? height;
 
@@ -289,7 +295,8 @@ class Ticket2Small extends StatelessWidget {
                                 alignment: Alignment.topCenter,
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 7.w),
-                                  child: Text(ticket.title, style: AppTypeFace.xsmallSemiBold.copyWith(color: Colors.white)),
+                                  child: Text(ticket.title,
+                                      style: AppTypeFace.xsmallSemiBold.copyWith(color: ColorType.values[int.parse(ticket.color)].color)),
                                 ),
                               ),
                             ),
@@ -300,7 +307,7 @@ class Ticket2Small extends StatelessWidget {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 9.w),
                                   child: Text(DateFormat("yy.MM.dd").format(ticket.ticketDate),
-                                      style: AppTypeFace.xsmallMedium.copyWith(color: Colors.white)),
+                                      style: AppTypeFace.xsmallMedium.copyWith(color: ColorType.values[int.parse(ticket.color)].color)),
                                 ),
                               ),
                             ),
@@ -445,8 +452,11 @@ class Ticket2Large extends StatelessWidget {
                               alignment: Alignment.topCenter,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 7.w),
-                                child:
-                                    Text(ticket.title, style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w800, color: Colors.white)),
+                                child: Text(ticket.title,
+                                    style: TextStyle(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w800,
+                                        color: ColorType.values[int.parse(ticket.color)].color)),
                               ),
                             ),
                           ),
@@ -527,7 +537,9 @@ class Ticket3Small extends StatelessWidget {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 7.w),
                                   child: Text(ticket.title,
-                                      style: AppTypeFace.xsmallSemiBold.copyWith(color: Colors.white).copyWith(color: Colors.white)),
+                                      style: AppTypeFace.xsmallSemiBold
+                                          .copyWith(color: Colors.white)
+                                          .copyWith(color: ColorType.values[int.parse(ticket.color)].color)),
                                 ),
                               ),
                             ),
@@ -538,7 +550,7 @@ class Ticket3Small extends StatelessWidget {
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 34.w),
                                   child: Text(DateFormat("yy.MM.dd").format(ticket.ticketDate),
-                                      style: AppTypeFace.xsmallMedium.copyWith(color: Colors.white)),
+                                      style: AppTypeFace.xsmallMedium.copyWith(color: ColorType.values[int.parse(ticket.color)].color)),
                                 ),
                               ),
                             ),
@@ -686,8 +698,11 @@ class Ticket3Large extends StatelessWidget {
                               alignment: Alignment.topCenter,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 7.w),
-                                child:
-                                    Text(ticket.title, style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w800, color: Colors.white)),
+                                child: Text(ticket.title,
+                                    style: TextStyle(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w800,
+                                        color: ColorType.values[int.parse(ticket.color)].color)),
                               ),
                             ),
                           ),
