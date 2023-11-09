@@ -26,18 +26,18 @@ class TicketsCardView extends GetView<TicketController> {
         } else {
           return StackedCardCarousel(type: StackedCardCarouselType.fadeOutStack, initialOffset: 20.w, spaceBetweenItems: 600.w, items: [
             for (TicketModel ticket in ticketList) ...[
-              if (ticket.ticketType == '1') ...[
-                if (ticket.layoutType == "small") Ticket1Small(ticket),
-                if (ticket.layoutType == "medium") Ticket1Medium(ticket),
-                if (ticket.layoutType == "large") Ticket1Large(ticket),
+              if (ticket.ticketType == '0') ...[
+                if (ticket.layoutType == "0") Ticket1Small(ticket),
+                if (ticket.layoutType == "1") Ticket1Medium(ticket),
+                if (ticket.layoutType == "2") Ticket1Large(ticket),
+              ] else if (ticket.ticketType == '1') ...[
+                if (ticket.layoutType == "0") Ticket2Small(ticket),
+                if (ticket.layoutType == "1") Ticket2Medium(ticket),
+                if (ticket.layoutType == "2") Ticket2Large(ticket),
               ] else if (ticket.ticketType == '2') ...[
-                if (ticket.layoutType == "small") Ticket2Small(ticket),
-                if (ticket.layoutType == "medium") Ticket2Medium(ticket),
-                if (ticket.layoutType == "large") Ticket2Large(ticket),
-              ] else if (ticket.ticketType == '3') ...[
-                if (ticket.layoutType == "small") Ticket3Small(ticket),
-                if (ticket.layoutType == "medium") Ticket3Medium(ticket),
-                if (ticket.layoutType == "large") Ticket3Large(ticket),
+                if (ticket.layoutType == "0") Ticket3Small(ticket),
+                if (ticket.layoutType == "1") Ticket3Medium(ticket),
+                if (ticket.layoutType == "2") Ticket3Large(ticket),
               ]
             ]
           ]);

@@ -58,7 +58,7 @@ class AuthService extends GetxService {
   Future<void> login() async {
     // Check user is exist
     try {
-      final response = await Dio().get(
+      await Dio().get(
         '${AppConst.apiUrl}/members',
         queryParameters: {
           'socialId': _userOAuth!.socialId,

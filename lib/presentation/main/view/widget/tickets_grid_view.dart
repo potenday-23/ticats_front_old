@@ -31,18 +31,18 @@ class TicketsGridView extends GetView<TicketController> {
                 spacing: 16.w,
                 children: [
                   for (TicketModel ticket in ticketList) ...[
-                    if (ticket.ticketType == '1') ...[
-                      if (ticket.layoutType == "small") Ticket1Small(ticket, width: 163.w, height: 273.w),
-                      if (ticket.layoutType == "medium") Ticket1Medium(ticket, width: 163.w, height: 273.w),
-                      if (ticket.layoutType == "large") Ticket1Large(ticket, width: 163.w, height: 273.w),
+                    if (ticket.ticketType == '0') ...[
+                      if (ticket.layoutType == "0") Ticket1Small(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "1") Ticket1Medium(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "2") Ticket1Large(ticket, width: 163.w, height: 273.w),
+                    ] else if (ticket.ticketType == '1') ...[
+                      if (ticket.layoutType == "0") Ticket2Small(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "1") Ticket2Medium(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "2") Ticket2Large(ticket, width: 163.w, height: 273.w),
                     ] else if (ticket.ticketType == '2') ...[
-                      if (ticket.layoutType == "small") Ticket2Small(ticket, width: 163.w, height: 273.w),
-                      if (ticket.layoutType == "medium") Ticket2Medium(ticket, width: 163.w, height: 273.w),
-                      if (ticket.layoutType == "large") Ticket2Large(ticket, width: 163.w, height: 273.w),
-                    ] else if (ticket.ticketType == '3') ...[
-                      if (ticket.layoutType == "small") Ticket3Small(ticket, width: 163.w, height: 273.w),
-                      if (ticket.layoutType == "medium") Ticket3Medium(ticket, width: 163.w, height: 273.w),
-                      if (ticket.layoutType == "large") Ticket3Large(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "0") Ticket3Small(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "1") Ticket3Medium(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "2") Ticket3Large(ticket, width: 163.w, height: 273.w),
                     ]
                   ],
                 ],
