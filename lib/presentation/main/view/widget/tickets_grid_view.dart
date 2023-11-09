@@ -32,26 +32,17 @@ class TicketsGridView extends GetView<TicketController> {
                 children: [
                   for (TicketModel ticket in ticketList) ...[
                     if (ticket.ticketType == '1') ...[
-                      if (ticket.layoutType == "small")
-                        Container(width: 163.w, height: 273.w, child: FittedBox(child: Ticket1Small(ticket))),
-                      if (ticket.layoutType == "medium")
-                        Container(width: 163.w, height: 273.w, child: FittedBox(child: Ticket1Medium(ticket))),
-                      if (ticket.layoutType == "large")
-                        Container(width: 163.w, height: 273.w, child: FittedBox(child: Ticket1Large(ticket))),
+                      if (ticket.layoutType == "small") Ticket1Small(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "medium") Ticket1Medium(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "large") Ticket1Large(ticket, width: 163.w, height: 273.w),
                     ] else if (ticket.ticketType == '2') ...[
-                      if (ticket.layoutType == "small")
-                        Container(width: 163.w, height: 273.w, child: FittedBox(child: Ticket2Small(ticket))),
-                      if (ticket.layoutType == "medium")
-                        Container(width: 163.w, height: 273.w, child: FittedBox(child: Ticket2Medium(ticket))),
-                      if (ticket.layoutType == "large")
-                        Container(width: 163.w, height: 273.w, child: FittedBox(child: Ticket2Large(ticket))),
+                      if (ticket.layoutType == "small") Ticket2Small(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "medium") Ticket2Medium(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "large") Ticket2Large(ticket, width: 163.w, height: 273.w),
                     ] else if (ticket.ticketType == '3') ...[
-                      if (ticket.layoutType == "small")
-                        Container(width: 163.w, height: 273.w, child: FittedBox(child: Ticket3Small(ticket))),
-                      if (ticket.layoutType == "medium")
-                        Container(width: 163.w, height: 273.w, child: FittedBox(child: Ticket3Medium(ticket))),
-                      if (ticket.layoutType == "large")
-                        Container(width: 163.w, height: 273.w, child: FittedBox(child: Ticket3Large(ticket))),
+                      if (ticket.layoutType == "small") Ticket3Small(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "medium") Ticket3Medium(ticket, width: 163.w, height: 273.w),
+                      if (ticket.layoutType == "large") Ticket3Large(ticket, width: 163.w, height: 273.w),
                     ]
                   ],
                 ],

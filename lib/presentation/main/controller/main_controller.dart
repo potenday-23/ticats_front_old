@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../view/home_screen.dart';
 import '../view/make_ticket_screen.dart';
 import '../view/my_page_screen.dart';
+import 'make_ticket_controller.dart';
 
 class MainController extends GetxController {
   List<Widget> pages = [
@@ -17,6 +18,8 @@ class MainController extends GetxController {
   int get selectedIndex => _selectedIndex.value;
 
   void changeIndex(int index) {
+    if (index == 1) Get.find<MakeTicketController>().resetTicket();
+
     _selectedIndex.value = index;
   }
 }

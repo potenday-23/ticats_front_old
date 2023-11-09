@@ -20,9 +20,10 @@ TicketModel _$TicketModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TicketModel {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
+  String? get imagePath => throw _privateConstructorUsedError;
   DateTime get ticketDate => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
   String? get memo => throw _privateConstructorUsedError;
@@ -32,10 +33,10 @@ mixin _$TicketModel {
   String? get friend => throw _privateConstructorUsedError;
   String? get ticketType => throw _privateConstructorUsedError;
   String? get layoutType => throw _privateConstructorUsedError;
-  bool get isLike => throw _privateConstructorUsedError;
-  String get isPrivate => throw _privateConstructorUsedError;
+  bool? get isLike => throw _privateConstructorUsedError;
+  String? get isPrivate => throw _privateConstructorUsedError;
   CategoryModel get category => throw _privateConstructorUsedError;
-  Member get member => throw _privateConstructorUsedError;
+  Member? get member => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,9 +51,10 @@ abstract class $TicketModelCopyWith<$Res> {
       _$TicketModelCopyWithImpl<$Res, TicketModel>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String title,
-      String imageUrl,
+      String? imageUrl,
+      String? imagePath,
       DateTime ticketDate,
       double rating,
       String? memo,
@@ -62,13 +64,13 @@ abstract class $TicketModelCopyWith<$Res> {
       String? friend,
       String? ticketType,
       String? layoutType,
-      bool isLike,
-      String isPrivate,
+      bool? isLike,
+      String? isPrivate,
       CategoryModel category,
-      Member member});
+      Member? member});
 
   $CategoryModelCopyWith<$Res> get category;
-  $MemberCopyWith<$Res> get member;
+  $MemberCopyWith<$Res>? get member;
 }
 
 /// @nodoc
@@ -84,9 +86,10 @@ class _$TicketModelCopyWithImpl<$Res, $Val extends TicketModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? title = null,
-    Object? imageUrl = null,
+    Object? imageUrl = freezed,
+    Object? imagePath = freezed,
     Object? ticketDate = null,
     Object? rating = null,
     Object? memo = freezed,
@@ -96,24 +99,28 @@ class _$TicketModelCopyWithImpl<$Res, $Val extends TicketModel>
     Object? friend = freezed,
     Object? ticketType = freezed,
     Object? layoutType = freezed,
-    Object? isLike = null,
-    Object? isPrivate = null,
+    Object? isLike = freezed,
+    Object? isPrivate = freezed,
     Object? category = null,
-    Object? member = null,
+    Object? member = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: null == imageUrl
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
       ticketDate: null == ticketDate
           ? _value.ticketDate
           : ticketDate // ignore: cast_nullable_to_non_nullable
@@ -150,22 +157,22 @@ class _$TicketModelCopyWithImpl<$Res, $Val extends TicketModel>
           ? _value.layoutType
           : layoutType // ignore: cast_nullable_to_non_nullable
               as String?,
-      isLike: null == isLike
+      isLike: freezed == isLike
           ? _value.isLike
           : isLike // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isPrivate: null == isPrivate
+              as bool?,
+      isPrivate: freezed == isPrivate
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as CategoryModel,
-      member: null == member
+      member: freezed == member
           ? _value.member
           : member // ignore: cast_nullable_to_non_nullable
-              as Member,
+              as Member?,
     ) as $Val);
   }
 
@@ -179,8 +186,12 @@ class _$TicketModelCopyWithImpl<$Res, $Val extends TicketModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $MemberCopyWith<$Res> get member {
-    return $MemberCopyWith<$Res>(_value.member, (value) {
+  $MemberCopyWith<$Res>? get member {
+    if (_value.member == null) {
+      return null;
+    }
+
+    return $MemberCopyWith<$Res>(_value.member!, (value) {
       return _then(_value.copyWith(member: value) as $Val);
     });
   }
@@ -195,9 +206,10 @@ abstract class _$$TicketModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String title,
-      String imageUrl,
+      String? imageUrl,
+      String? imagePath,
       DateTime ticketDate,
       double rating,
       String? memo,
@@ -207,15 +219,15 @@ abstract class _$$TicketModelImplCopyWith<$Res>
       String? friend,
       String? ticketType,
       String? layoutType,
-      bool isLike,
-      String isPrivate,
+      bool? isLike,
+      String? isPrivate,
       CategoryModel category,
-      Member member});
+      Member? member});
 
   @override
   $CategoryModelCopyWith<$Res> get category;
   @override
-  $MemberCopyWith<$Res> get member;
+  $MemberCopyWith<$Res>? get member;
 }
 
 /// @nodoc
@@ -229,9 +241,10 @@ class __$$TicketModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? title = null,
-    Object? imageUrl = null,
+    Object? imageUrl = freezed,
+    Object? imagePath = freezed,
     Object? ticketDate = null,
     Object? rating = null,
     Object? memo = freezed,
@@ -241,24 +254,28 @@ class __$$TicketModelImplCopyWithImpl<$Res>
     Object? friend = freezed,
     Object? ticketType = freezed,
     Object? layoutType = freezed,
-    Object? isLike = null,
-    Object? isPrivate = null,
+    Object? isLike = freezed,
+    Object? isPrivate = freezed,
     Object? category = null,
-    Object? member = null,
+    Object? member = freezed,
   }) {
     return _then(_$TicketModelImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: null == imageUrl
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
       ticketDate: null == ticketDate
           ? _value.ticketDate
           : ticketDate // ignore: cast_nullable_to_non_nullable
@@ -295,22 +312,22 @@ class __$$TicketModelImplCopyWithImpl<$Res>
           ? _value.layoutType
           : layoutType // ignore: cast_nullable_to_non_nullable
               as String?,
-      isLike: null == isLike
+      isLike: freezed == isLike
           ? _value.isLike
           : isLike // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isPrivate: null == isPrivate
+              as bool?,
+      isPrivate: freezed == isPrivate
           ? _value.isPrivate
           : isPrivate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as CategoryModel,
-      member: null == member
+      member: freezed == member
           ? _value.member
           : member // ignore: cast_nullable_to_non_nullable
-              as Member,
+              as Member?,
     ));
   }
 }
@@ -319,9 +336,10 @@ class __$$TicketModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TicketModelImpl implements _TicketModel {
   const _$TicketModelImpl(
-      {required this.id,
+      {this.id,
       required this.title,
-      required this.imageUrl,
+      this.imageUrl,
+      this.imagePath,
       required this.ticketDate,
       required this.rating,
       required this.memo,
@@ -331,20 +349,22 @@ class _$TicketModelImpl implements _TicketModel {
       required this.friend,
       required this.ticketType,
       required this.layoutType,
-      required this.isLike,
-      required this.isPrivate,
+      this.isLike,
+      this.isPrivate,
       required this.category,
-      required this.member});
+      this.member});
 
   factory _$TicketModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TicketModelImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String title;
   @override
-  final String imageUrl;
+  final String? imageUrl;
+  @override
+  final String? imagePath;
   @override
   final DateTime ticketDate;
   @override
@@ -364,17 +384,17 @@ class _$TicketModelImpl implements _TicketModel {
   @override
   final String? layoutType;
   @override
-  final bool isLike;
+  final bool? isLike;
   @override
-  final String isPrivate;
+  final String? isPrivate;
   @override
   final CategoryModel category;
   @override
-  final Member member;
+  final Member? member;
 
   @override
   String toString() {
-    return 'TicketModel(id: $id, title: $title, imageUrl: $imageUrl, ticketDate: $ticketDate, rating: $rating, memo: $memo, seat: $seat, location: $location, price: $price, friend: $friend, ticketType: $ticketType, layoutType: $layoutType, isLike: $isLike, isPrivate: $isPrivate, category: $category, member: $member)';
+    return 'TicketModel(id: $id, title: $title, imageUrl: $imageUrl, imagePath: $imagePath, ticketDate: $ticketDate, rating: $rating, memo: $memo, seat: $seat, location: $location, price: $price, friend: $friend, ticketType: $ticketType, layoutType: $layoutType, isLike: $isLike, isPrivate: $isPrivate, category: $category, member: $member)';
   }
 
   @override
@@ -386,6 +406,8 @@ class _$TicketModelImpl implements _TicketModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath) &&
             (identical(other.ticketDate, ticketDate) ||
                 other.ticketDate == ticketDate) &&
             (identical(other.rating, rating) || other.rating == rating) &&
@@ -414,6 +436,7 @@ class _$TicketModelImpl implements _TicketModel {
       id,
       title,
       imageUrl,
+      imagePath,
       ticketDate,
       rating,
       memo,
@@ -444,9 +467,10 @@ class _$TicketModelImpl implements _TicketModel {
 
 abstract class _TicketModel implements TicketModel {
   const factory _TicketModel(
-      {required final int id,
+      {final int? id,
       required final String title,
-      required final String imageUrl,
+      final String? imageUrl,
+      final String? imagePath,
       required final DateTime ticketDate,
       required final double rating,
       required final String? memo,
@@ -456,20 +480,22 @@ abstract class _TicketModel implements TicketModel {
       required final String? friend,
       required final String? ticketType,
       required final String? layoutType,
-      required final bool isLike,
-      required final String isPrivate,
+      final bool? isLike,
+      final String? isPrivate,
       required final CategoryModel category,
-      required final Member member}) = _$TicketModelImpl;
+      final Member? member}) = _$TicketModelImpl;
 
   factory _TicketModel.fromJson(Map<String, dynamic> json) =
       _$TicketModelImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
   String get title;
   @override
-  String get imageUrl;
+  String? get imageUrl;
+  @override
+  String? get imagePath;
   @override
   DateTime get ticketDate;
   @override
@@ -489,13 +515,13 @@ abstract class _TicketModel implements TicketModel {
   @override
   String? get layoutType;
   @override
-  bool get isLike;
+  bool? get isLike;
   @override
-  String get isPrivate;
+  String? get isPrivate;
   @override
   CategoryModel get category;
   @override
-  Member get member;
+  Member? get member;
   @override
   @JsonKey(ignore: true)
   _$$TicketModelImplCopyWith<_$TicketModelImpl> get copyWith =>
