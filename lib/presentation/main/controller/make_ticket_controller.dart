@@ -45,6 +45,7 @@ class MakeTicketController extends GetxController {
   final Rx<DateTime> selectedDate = DateTime.now().obs;
   final RxDouble selectedRating = 4.5.obs;
   final TextEditingController memoController = TextEditingController();
+  final RxInt memoTextLength = 0.obs;
   final TextEditingController locationController = TextEditingController();
   final TextEditingController friendController = TextEditingController();
   final TextEditingController seatController = TextEditingController();

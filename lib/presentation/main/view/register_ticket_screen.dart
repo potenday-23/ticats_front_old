@@ -23,7 +23,11 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
       appBar: AppBar(
         toolbarHeight: 56.h,
         scrolledUnderElevation: 0,
-        title: Text("티켓 등록"),
+        leading: IconButton(
+          icon: SvgPicture.asset("assets/icons/arrow_left.svg", width: 24.w, height: 24.w),
+          onPressed: () => controller.currentIndex.value = 0,
+        ),
+        title: Text("티켓 만들기"),
         titleTextStyle: AppTypeFace.smallBold.copyWith(color: Colors.black),
       ),
       body: SingleChildScrollView(
@@ -83,18 +87,39 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
               SizedBox(height: 32.h),
               Text("메모를 입력해주세요.", style: AppTypeFace.xsmallMedium),
               SizedBox(height: 10.h),
-              TextField(
-                maxLines: 6,
-                decoration: InputDecoration(
-                  isDense: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: AppColor.grayF2,
+              Obx(
+                () => Stack(
+                  children: [
+                    TextField(
+                      controller: controller.memoController,
+                      maxLines: 6,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.r),
+                          borderSide: BorderSide.none,
+                        ),
+                        counterText: "",
+                        filled: true,
+                        fillColor: AppColor.grayF2,
+                        hintText: "메모를 입력해주세요.",
+                        hintStyle: AppTypeFace.smallSemiBold.copyWith(color: AppColor.gray8E),
+                      ),
+                      style: AppTypeFace.smallSemiBold,
+                      onChanged: (value) => controller.memoTextLength.value = value.length,
+                      maxLength: 100,
+                    ),
+                    Positioned.fill(
+                      right: 12.w,
+                      bottom: 12.h,
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: Text("${controller.memoTextLength.value}/100",
+                            style: AppTypeFace.xsmallMedium.copyWith(color: AppColor.gray8E)),
+                      ),
+                    ),
+                  ],
                 ),
-                style: AppTypeFace.smallSemiBold,
               ),
               SizedBox(height: 32.h),
               Text("어디서 봤나요? 장소를 입력해주세요.", style: AppTypeFace.xsmallMedium),
