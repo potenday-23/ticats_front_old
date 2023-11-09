@@ -25,7 +25,7 @@ class MyTicketScreen extends GetView<TicketController> {
         child: Obx(() {
           if (controller.isMyTicketLoading.value) {
             return const Center(child: CircularProgressIndicator());
-          } else if (controller.myTicketList.isEmpty) {
+          } else if (controller.myTicketList.isNotEmpty) {
             return Column(
               children: [
                 GestureDetector(
