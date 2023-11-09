@@ -8,9 +8,10 @@ part of 'ticket_model.dart';
 
 _$TicketModelImpl _$$TicketModelImplFromJson(Map<String, dynamic> json) =>
     _$TicketModelImpl(
-      id: json['id'] as int,
+      id: json['id'] as int?,
       title: json['title'] as String,
-      imageUrl: json['imageUrl'] as String,
+      imageUrl: json['imageUrl'] as String?,
+      imagePath: json['imagePath'] as String?,
       ticketDate: DateTime.parse(json['ticketDate'] as String),
       rating: (json['rating'] as num).toDouble(),
       memo: json['memo'] as String?,
@@ -20,11 +21,13 @@ _$TicketModelImpl _$$TicketModelImplFromJson(Map<String, dynamic> json) =>
       friend: json['friend'] as String?,
       ticketType: json['ticketType'] as String?,
       layoutType: json['layoutType'] as String?,
-      isLike: json['isLike'] as bool,
-      isPrivate: json['isPrivate'] as String,
+      isLike: json['isLike'] as bool?,
+      isPrivate: json['isPrivate'] as String?,
       category:
           CategoryModel.fromJson(json['category'] as Map<String, dynamic>),
-      member: Member.fromJson(json['member'] as Map<String, dynamic>),
+      member: json['member'] == null
+          ? null
+          : Member.fromJson(json['member'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$TicketModelImplToJson(_$TicketModelImpl instance) =>
@@ -32,6 +35,7 @@ Map<String, dynamic> _$$TicketModelImplToJson(_$TicketModelImpl instance) =>
       'id': instance.id,
       'title': instance.title,
       'imageUrl': instance.imageUrl,
+      'imagePath': instance.imagePath,
       'ticketDate': instance.ticketDate.toIso8601String(),
       'rating': instance.rating,
       'memo': instance.memo,

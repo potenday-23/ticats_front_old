@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tickets/app/config/app_typeface.dart';
 import 'package:tickets/presentation/main/controller/main_controller.dart';
+import 'package:tickets/presentation/main/controller/make_ticket_controller.dart';
 
 class TicketsBottomNavBar extends GetView<MainController> {
   const TicketsBottomNavBar({super.key});
@@ -44,7 +45,10 @@ class TicketsBottomNavBar extends GetView<MainController> {
                     Expanded(
                       child: GestureDetector(
                         behavior: HitTestBehavior.translucent,
-                        onTap: () => controller.changeIndex(1),
+                        onTap: () {
+                          controller.changeIndex(1);
+                          Get.find<MakeTicketController>().currentIndex.value = 0;
+                        },
                         child: Column(children: [
                           SizedBox(height: 8.h),
                           SvgPicture.asset(

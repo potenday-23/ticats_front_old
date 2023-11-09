@@ -9,9 +9,10 @@ part 'ticket_model.g.dart';
 @freezed
 class TicketModel with _$TicketModel {
   const factory TicketModel({
-    required int id,
+    int? id,
     required String title,
-    required String imageUrl,
+    String? imageUrl,
+    String? imagePath,
     required DateTime ticketDate,
     required double rating,
     required String? memo,
@@ -21,10 +22,10 @@ class TicketModel with _$TicketModel {
     required String? friend,
     required String? ticketType,
     required String? layoutType,
-    required bool isLike,
-    required String isPrivate,
+    bool? isLike,
+    String? isPrivate,
     required CategoryModel category,
-    required Member member,
+    Member? member,
   }) = _TicketModel;
 
   factory TicketModel.fromJson(Map<String, Object?> json) => _$TicketModelFromJson(json);
