@@ -21,9 +21,9 @@ import '../view/register_ticket_screen.dart';
 class MakeTicketController extends GetxController {
   // Screen Control
   final List<Widget> screens = [
-    MyTicketScreen(),
-    RegisterTicketScreen(),
-    SelectTicketLayoutScreen(),
+    const MyTicketScreen(),
+    const RegisterTicketScreen(),
+    const SelectTicketLayoutScreen(),
     SaveTicketScreen(),
   ];
 
@@ -44,7 +44,7 @@ class MakeTicketController extends GetxController {
     color: ColorType.white.id.toString(),
     ticketType: "",
     layoutType: "",
-    category: CategoryModel(id: 0, name: ""),
+    category: const CategoryModel(id: 0, name: ""),
   ).obs;
 
   final Rx<XFile?> imageFile = XFile("").obs;

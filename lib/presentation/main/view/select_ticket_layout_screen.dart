@@ -25,7 +25,7 @@ class SelectTicketLayoutScreen extends GetView<MakeTicketController> {
           icon: SvgPicture.asset("assets/icons/arrow_left.svg", width: 24.w, height: 24.w),
           onPressed: () => controller.currentIndex.value = 1,
         ),
-        title: Text("티켓 만들기"),
+        title: const Text("티켓 만들기"),
         titleTextStyle: AppTypeFace.smallBold.copyWith(color: Colors.black),
       ),
       body: Column(
@@ -40,7 +40,7 @@ class SelectTicketLayoutScreen extends GetView<MakeTicketController> {
                     : controller.selectLayoutTabIndex.value == 1
                         ? EdgeInsets.fromLTRB(0, 4.h, 0, 4.h)
                         : EdgeInsets.fromLTRB(0, 4.h, 4.w, 4.h),
-                labels: ["티켓 모양", "레이아웃", "글자 색"],
+                labels: const ["티켓 모양", "레이아웃", "글자 색"],
                 icons: [
                   controller.selectLayoutTabIndex.value == 0 ? Icons.check : null,
                   controller.selectLayoutTabIndex.value == 1 ? Icons.check : null,
@@ -50,27 +50,29 @@ class SelectTicketLayoutScreen extends GetView<MakeTicketController> {
                 isShadowEnable: false,
                 selectedLabelIndex: (index) => controller.selectLayoutTabIndex.value = index,
                 selectedIndex: controller.selectLayoutTabIndex.value,
-                selectedBackgroundColors: [AppColor.primaryLight],
+                selectedBackgroundColors: const [AppColor.primaryLight],
                 selectedTextStyle: AppTypeFace.xsmallMedium.copyWith(color: Colors.white),
-                unSelectedBackgroundColors: [AppColor.grayF2],
+                unSelectedBackgroundColors: const [AppColor.grayF2],
                 unSelectedTextStyle: AppTypeFace.xsmallMedium.copyWith(color: Colors.black),
               ),
             ),
           ),
           SizedBox(height: 20.h),
           Obx(() {
-            if (controller.selectLayoutTabIndex.value == 0)
+            if (controller.selectLayoutTabIndex.value == 0) {
               return const _SelectTicketTypeWidget();
-            else if (controller.selectLayoutTabIndex.value == 1)
+            } else if (controller.selectLayoutTabIndex.value == 1) {
               return const _SelectTicketLayoutWidget();
-            else
+            } else {
               return const _SelectTicketColorWidget();
+            }
           }),
           Obx(() {
-            if (controller.selectLayoutTabIndex.value == 0)
+            if (controller.selectLayoutTabIndex.value == 0) {
               return const _SelectTicketTypeView();
-            else
+            } else {
               return const _SelectTicketLayoutView();
+            }
           }),
         ],
       ),
@@ -87,7 +89,7 @@ class _SelectTicketTypeWidget extends GetView<MakeTicketController> {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 38.65.w),
-          child: Container(
+          child: SizedBox(
             width: double.maxFinite,
             child: Obx(
               () => Row(
@@ -167,7 +169,7 @@ class _SelectTicketLayoutWidget extends GetView<MakeTicketController> {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 38.65.w),
-          child: Container(
+          child: SizedBox(
             width: double.maxFinite,
             child: Obx(
               () => Row(
@@ -244,8 +246,8 @@ class _SelectTicketLayoutView extends GetView<MakeTicketController> {
                       padding: EdgeInsets.symmetric(horizontal: 24.w),
                       child: Obx(
                         () => TicketsButton(
-                          controller.selectLayoutTabIndex == 1 ? "다음" : "티켓 만들기",
-                          onTap: controller.selectLayoutTabIndex == 1
+                          controller.selectLayoutTabIndex.value == 1 ? "다음" : "티켓 만들기",
+                          onTap: controller.selectLayoutTabIndex.value == 1
                               ? () => controller.selectLayoutTabIndex.value = 2
                               : () async => await showTicketsDialog(context),
                           color: AppColor.primaryNormal,
@@ -273,7 +275,7 @@ class _SelectTicketColorWidget extends GetView<MakeTicketController> {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 55.w),
-          child: Container(
+          child: SizedBox(
             width: double.maxFinite,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -55,22 +55,22 @@ class HomeScreen extends GetView<HomeController> {
         () => TabBarView(
           controller: controller.tabController,
           children: [
-            controller.allViewIndex == 0 ? TicketsCardView(isAllTicket: true) : TicketsGridView(isAllTicket: true),
-            controller.myViewIndex == 0 ? TicketsCardView() : TicketsGridView(),
+            controller.allViewIndex.value == 0 ? const TicketsCardView(isAllTicket: true) : const TicketsGridView(isAllTicket: true),
+            controller.myViewIndex.value == 0 ? const TicketsCardView() : const TicketsGridView(),
           ],
         ),
       ),
       floatingActionButton: Theme(
         data: Theme.of(context).copyWith(highlightColor: AppColor.primaryNormal.withOpacity(0.3)),
         child: FloatingActionButton(
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
           backgroundColor: Colors.white,
           splashColor: AppColor.primaryNormal.withOpacity(0.5),
           onPressed: () {
             if (controller.tabIndex.value == 0) {
-              controller.allViewIndex == 0 ? controller.allViewIndex.value = 1 : controller.allViewIndex.value = 0;
+              controller.allViewIndex.value == 0 ? controller.allViewIndex.value = 1 : controller.allViewIndex.value = 0;
             } else {
-              controller.myViewIndex == 0 ? controller.myViewIndex.value = 1 : controller.myViewIndex.value = 0;
+              controller.myViewIndex.value == 0 ? controller.myViewIndex.value = 1 : controller.myViewIndex.value = 0;
             }
           },
           child: Obx(

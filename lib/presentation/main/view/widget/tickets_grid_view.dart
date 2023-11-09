@@ -19,9 +19,9 @@ class TicketsGridView extends GetView<TicketController> {
         List<TicketModel> ticketList = isAllTicket ? controller.ticketList : controller.myTicketList;
 
         if (controller.isTicketLoading.value || controller.isMyTicketLoading.value) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (ticketList.isEmpty) {
-          return NoTicketWidget();
+          return const NoTicketWidget();
         } else {
           return SingleChildScrollView(
             physics: const ClampingScrollPhysics(),

@@ -27,7 +27,7 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
           icon: SvgPicture.asset("assets/icons/arrow_left.svg", width: 24.w, height: 24.w),
           onPressed: () => controller.currentIndex.value = 0,
         ),
-        title: Text("티켓 만들기"),
+        title: const Text("티켓 만들기"),
         titleTextStyle: AppTypeFace.smallBold.copyWith(color: Colors.black),
       ),
       body: SingleChildScrollView(
@@ -79,11 +79,11 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
                 ],
               ),
               SizedBox(height: 32.h),
-              _SelectCategoryWidget(),
+              const _SelectCategoryWidget(),
               SizedBox(height: 32.h),
               _SelectDateWidget(context),
               SizedBox(height: 32.h),
-              _SelectRatingWidget(),
+              const _SelectRatingWidget(),
               SizedBox(height: 32.h),
               Text("메모를 입력해주세요.", style: AppTypeFace.xsmallMedium),
               SizedBox(height: 10.h),
@@ -126,7 +126,7 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
               TextField(
                 controller: controller.locationController,
                 decoration: InputDecoration(
-                  border: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.gray98)),
+                  border: const UnderlineInputBorder(borderSide: BorderSide(color: AppColor.gray98)),
                   hintText: "장소를 입력하세요.",
                   hintStyle: AppTypeFace.smallSemiBold.copyWith(color: AppColor.gray8E),
                 ),
@@ -136,7 +136,7 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
               TextField(
                 controller: controller.friendController,
                 decoration: InputDecoration(
-                  border: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.gray98)),
+                  border: const UnderlineInputBorder(borderSide: BorderSide(color: AppColor.gray98)),
                   hintText: "내용을 입력하세요.",
                   hintStyle: AppTypeFace.smallSemiBold.copyWith(color: AppColor.gray8E),
                 ),
@@ -147,7 +147,7 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
               TextField(
                 controller: controller.seatController,
                 decoration: InputDecoration(
-                  border: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.gray98)),
+                  border: const UnderlineInputBorder(borderSide: BorderSide(color: AppColor.gray98)),
                   hintText: "좌석을 입력하세요.",
                   hintStyle: AppTypeFace.smallSemiBold.copyWith(color: AppColor.gray8E),
                 ),
@@ -158,7 +158,7 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
               TextField(
                 controller: controller.priceController,
                 decoration: InputDecoration(
-                  border: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.gray98)),
+                  border: const UnderlineInputBorder(borderSide: BorderSide(color: AppColor.gray98)),
                   hintText: "금액을 입력하세요.",
                   hintStyle: AppTypeFace.smallSemiBold.copyWith(color: AppColor.gray8E),
                 ),
@@ -218,7 +218,7 @@ class _SelectCategoryWidget extends GetView<MakeTicketController> {
 }
 
 class _SelectDateWidget extends GetView<MakeTicketController> {
-  const _SelectDateWidget(BuildContext this.context);
+  const _SelectDateWidget(this.context);
 
   final BuildContext context;
 

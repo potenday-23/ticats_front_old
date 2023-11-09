@@ -32,7 +32,7 @@ class SaveTicketScreen extends GetView<MakeTicketController> {
             },
           ),
         ],
-        title: Text("티켓 만들기"),
+        title: const Text("티켓 만들기"),
         titleTextStyle: AppTypeFace.smallBold.copyWith(color: Colors.black),
       ),
       body: SingleChildScrollView(
@@ -72,7 +72,7 @@ class SaveTicketScreen extends GetView<MakeTicketController> {
           foregroundColor: Colors.white,
           padding: EdgeInsets.symmetric(horizontal: 12.w),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          visualDensity: VisualDensity(horizontal: -4, vertical: 0),
+          visualDensity: const VisualDensity(horizontal: -4, vertical: 0),
         ),
         onPressed: () async {
           await _screenshotController.capture(delay: const Duration(milliseconds: 10)).then((Uint8List? image) async {
