@@ -38,8 +38,8 @@ class SelectTicketLayoutScreen extends GetView<MakeTicketController> {
                 marginSelected: controller.selectLayoutTabIndex.value == 0
                     ? EdgeInsets.fromLTRB(4.w, 4.h, 0, 4.h)
                     : controller.selectLayoutTabIndex.value == 1
-                        ? EdgeInsets.zero
-                        : EdgeInsets.fromLTRB(0.w, 4.h, 4.w, 4.h),
+                        ? EdgeInsets.fromLTRB(0, 4.h, 0, 4.h)
+                        : EdgeInsets.fromLTRB(0, 4.h, 4.w, 4.h),
                 labels: ["티켓 모양", "레이아웃", "글자 색"],
                 icons: [
                   controller.selectLayoutTabIndex.value == 0 ? Icons.check : null,
@@ -242,10 +242,14 @@ class _SelectTicketLayoutView extends GetView<MakeTicketController> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.w),
-                      child: TicketsButton(
-                        "티켓 만들기",
-                        onTap: () async => await showTicketsDialog(context),
-                        color: AppColor.primaryNormal,
+                      child: Obx(
+                        () => TicketsButton(
+                          controller.selectLayoutTabIndex == 1 ? "다음" : "티켓 만들기",
+                          onTap: controller.selectLayoutTabIndex == 1
+                              ? () => controller.selectLayoutTabIndex.value = 2
+                              : () async => await showTicketsDialog(context),
+                          color: AppColor.primaryNormal,
+                        ),
                       ),
                     ),
                     SizedBox(height: 16.h),
