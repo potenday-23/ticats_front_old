@@ -5,6 +5,7 @@ import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:get/get.dart';
 import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
+import 'package:tickets/presentation/main/data/enum/color.dart';
 import 'package:tickets/presentation/widget/tickets.dart';
 import 'package:tickets/presentation/widget/tickets_button.dart';
 
@@ -27,22 +28,25 @@ class SelectTicketLayoutScreen extends GetView<MakeTicketController> {
           Center(
             child: Obx(
               () => FlutterToggleTab(
-                width: 60,
+                width: 90,
                 height: 48.h,
                 marginSelected: controller.selectLayoutTabIndex.value == 0
                     ? EdgeInsets.fromLTRB(4.w, 4.h, 0, 4.h)
-                    : EdgeInsets.fromLTRB(0.w, 4.h, 4.w, 4.h),
-                labels: ["티켓 모양", "레이아웃"],
+                    : controller.selectLayoutTabIndex.value == 1
+                        ? EdgeInsets.zero
+                        : EdgeInsets.fromLTRB(0.w, 4.h, 4.w, 4.h),
+                labels: ["티켓 모양", "레이아웃", "글자 색"],
                 icons: [
                   controller.selectLayoutTabIndex.value == 0 ? Icons.check : null,
                   controller.selectLayoutTabIndex.value == 1 ? Icons.check : null,
+                  controller.selectLayoutTabIndex.value == 2 ? Icons.check : null,
                 ],
                 iconSize: 18.w,
                 isShadowEnable: false,
                 selectedLabelIndex: (index) => controller.selectLayoutTabIndex.value = index,
                 selectedIndex: controller.selectLayoutTabIndex.value,
                 selectedBackgroundColors: [AppColor.primaryLight],
-                selectedTextStyle: AppTypeFace.xsmallMedium.copyWith(color: Colors.black),
+                selectedTextStyle: AppTypeFace.xsmallMedium.copyWith(color: Colors.white),
                 unSelectedBackgroundColors: [AppColor.grayF2],
                 unSelectedTextStyle: AppTypeFace.xsmallMedium.copyWith(color: Colors.black),
               ),
@@ -52,8 +56,10 @@ class SelectTicketLayoutScreen extends GetView<MakeTicketController> {
           Obx(() {
             if (controller.selectLayoutTabIndex.value == 0)
               return const _SelectTicketTypeWidget();
-            else
+            else if (controller.selectLayoutTabIndex.value == 1)
               return const _SelectTicketLayoutWidget();
+            else
+              return const _SelectTicketColorWidget();
           }),
           Obx(() {
             if (controller.selectLayoutTabIndex.value == 0)
@@ -148,7 +154,7 @@ class _SelectTicketTypeView extends GetView<MakeTicketController> {
 }
 
 class _SelectTicketLayoutWidget extends GetView<MakeTicketController> {
-  const _SelectTicketLayoutWidget({super.key});
+  const _SelectTicketLayoutWidget();
 
   @override
   Widget build(BuildContext context) {
