@@ -17,7 +17,7 @@ class Ticket1Small extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width ?? 365.w,
       height: height ?? 611.w,
       child: FittedBox(
@@ -119,7 +119,7 @@ class Ticket1Medium extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width ?? 365.w,
       height: height ?? 611.w,
       child: FittedBox(
@@ -214,7 +214,7 @@ class Ticket1Large extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width ?? 365.w,
       height: height ?? 611.w,
       child: FittedBox(
@@ -301,7 +301,7 @@ class Ticket2Small extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width ?? 364.w,
       height: height ?? 611.w,
       child: FittedBox(
@@ -403,7 +403,7 @@ class Ticket2Medium extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width ?? 364.w,
       height: height ?? 611.w,
       child: FittedBox(
@@ -498,7 +498,7 @@ class Ticket2Large extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width ?? 364.w,
       height: height ?? 611.w,
       child: FittedBox(
@@ -587,7 +587,7 @@ class Ticket3Small extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width ?? 365.w,
       height: height ?? 611.w,
       child: FittedBox(
@@ -691,7 +691,7 @@ class Ticket3Medium extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width ?? 365.w,
       height: height ?? 611.w,
       child: FittedBox(
@@ -792,7 +792,7 @@ class Ticket3Large extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width ?? 365.w,
       height: height ?? 611.w,
       child: FittedBox(

@@ -18,7 +18,7 @@ class TicketsBottomNavBar extends GetView<MainController> {
             height: 66.h,
             child: Column(
               children: [
-                Divider(height: 1, color: Color(0xFFE5E5EA)),
+                const Divider(height: 1, color: Color(0xFFE5E5EA)),
                 Row(
                   children: [
                     Expanded(
@@ -36,7 +36,7 @@ class TicketsBottomNavBar extends GetView<MainController> {
                           Text(
                             "홈",
                             style: AppTypeFace.xsmallBold.copyWith(
-                              color: controller.selectedIndex == 0 ? Color(0xFFF16AAB) : Color(0xFF636366),
+                              color: controller.selectedIndex == 0 ? const Color(0xFFF16AAB) : const Color(0xFF636366),
                             ),
                           )
                         ]),
@@ -60,7 +60,7 @@ class TicketsBottomNavBar extends GetView<MainController> {
                           Text(
                             "티켓 만들기",
                             style: AppTypeFace.xsmallBold.copyWith(
-                              color: controller.selectedIndex == 1 ? Color(0xFFF16AAB) : Color(0xFF636366),
+                              color: controller.selectedIndex == 1 ? const Color(0xFFF16AAB) : const Color(0xFF636366),
                             ),
                           )
                         ]),
@@ -81,7 +81,7 @@ class TicketsBottomNavBar extends GetView<MainController> {
                           Text(
                             "마이페이지",
                             style: AppTypeFace.xsmallBold.copyWith(
-                              color: controller.selectedIndex == 2 ? Color(0xFFF16AAB) : Color(0xFF636366),
+                              color: controller.selectedIndex == 2 ? const Color(0xFFF16AAB) : const Color(0xFF636366),
                             ),
                           )
                         ]),

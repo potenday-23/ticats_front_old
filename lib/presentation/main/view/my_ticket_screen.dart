@@ -17,7 +17,7 @@ class MyTicketScreen extends GetView<TicketController> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 56.h,
-        title: Text("티켓 등록"),
+        title: const Text("티켓 등록"),
         titleTextStyle: AppTypeFace.smallBold.copyWith(color: Colors.black),
       ),
       body: Padding(
@@ -44,7 +44,7 @@ class MyTicketScreen extends GetView<TicketController> {
               ],
             );
           } else {
-            return SizedBox();
+            return const SizedBox();
           }
         }),
       ),

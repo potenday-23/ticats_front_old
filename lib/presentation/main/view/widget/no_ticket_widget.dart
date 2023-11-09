@@ -5,7 +5,7 @@ import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
 
 class NoTicketWidget extends StatelessWidget {
-  const NoTicketWidget();
+  const NoTicketWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

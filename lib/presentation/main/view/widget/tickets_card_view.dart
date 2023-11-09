@@ -20,9 +20,9 @@ class TicketsCardView extends GetView<TicketController> {
         List<TicketModel> ticketList = isAllTicket ? controller.ticketList : controller.myTicketList;
 
         if (controller.isTicketLoading.value || controller.isMyTicketLoading.value) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (ticketList.isEmpty) {
-          return NoTicketWidget();
+          return const NoTicketWidget();
         } else {
           return StackedCardCarousel(type: StackedCardCarouselType.fadeOutStack, initialOffset: 20.w, spaceBetweenItems: 600.w, items: [
             for (TicketModel ticket in ticketList) ...[

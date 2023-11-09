@@ -11,7 +11,7 @@ class MainPage extends GetView<MainController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() => controller.pages[controller.selectedIndex]),
-      bottomNavigationBar: TicketsBottomNavBar(),
+      bottomNavigationBar: const TicketsBottomNavBar(),
     );
   }
 }

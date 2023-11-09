@@ -28,7 +28,7 @@ class SelectCategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: RegisterAppBar(),
+      appBar: const RegisterAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
@@ -48,7 +48,7 @@ class SelectCategoryPage extends StatelessWidget {
                 TicketsButton(
                   "티켓 만들기",
                   onTap: () async => await Get.find<RegisterController>().saveCategories(),
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [Color(0xFFF683BB), Color(0xFFFE6565)],

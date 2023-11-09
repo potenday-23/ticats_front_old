@@ -8,9 +8,9 @@ import 'make_ticket_controller.dart';
 
 class MainController extends GetxController {
   List<Widget> pages = [
-    HomeScreen(),
-    MakeTicketScreen(),
-    MyPageScreen(),
+    const HomeScreen(),
+    const MakeTicketScreen(),
+    const MyPageScreen(),
   ];
 
   final _selectedIndex = 0.obs;

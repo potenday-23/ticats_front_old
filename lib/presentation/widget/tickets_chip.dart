@@ -4,7 +4,7 @@ import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
 
 class TicketsChip extends StatelessWidget {
-  const TicketsChip(this.text, {this.color, this.padding, required this.onTap});
+  const TicketsChip(this.text, {super.key, this.color, this.padding, required this.onTap});
 
   final String text;
   final EdgeInsets? padding;
