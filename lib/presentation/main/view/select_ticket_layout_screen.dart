@@ -259,3 +259,34 @@ class _SelectTicketLayoutView extends GetView<MakeTicketController> {
     );
   }
 }
+
+class _SelectTicketColorWidget extends GetView<MakeTicketController> {
+  const _SelectTicketColorWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 55.w),
+          child: Container(
+            width: double.maxFinite,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                for (ColorType color in ColorType.values)
+                  GestureDetector(
+                    onTap: () {
+                      controller.selectedColor.value = color.id;
+                      controller.makeTicketModel.value = controller.makeTicketModel.value.copyWith(color: color.id.toString());
+                    },
+                    child: Image.asset("assets/icons/color_${color.name}.png", width: 35.w, height: 35.w),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
