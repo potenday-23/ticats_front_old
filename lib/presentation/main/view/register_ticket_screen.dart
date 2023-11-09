@@ -166,28 +166,12 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
                 keyboardType: TextInputType.number,
               ),
               SizedBox(height: 19.h),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 126.w,
-                    child: TicketsButton(
-                      "저장하기",
-                      onTap: () {},
-                      color: AppColor.grayE5,
-                      textColor: Colors.black,
-                    ),
-                  ),
-                  SizedBox(width: 16.w),
-                  Expanded(
-                    child: TicketsButton(
-                      "티켓 만들기",
-                      onTap: () {
-                        controller.saveTicket();
-                      },
-                      color: AppColor.primaryNormal,
-                    ),
-                  ),
-                ],
+              TicketsButton(
+                "티켓 만들기",
+                onTap: () {
+                  controller.saveTicket();
+                },
+                color: AppColor.primaryNormal,
               ),
               SizedBox(height: 16.h),
             ],
