@@ -44,7 +44,7 @@ class TicketController extends GetxController {
       var response = await TicketsDio().get('/tickets/my');
 
       if (response.statusCode == 200) {
-        ticketList.assignAll(response.data.map<TicketModel>((e) => TicketModel.fromJson(e)).toList());
+        myTicketList.assignAll(response.data.map<TicketModel>((e) => TicketModel.fromJson(e)).toList());
       }
     } on Exception catch (e) {
       print(e);
