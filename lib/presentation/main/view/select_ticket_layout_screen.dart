@@ -8,6 +8,7 @@ import 'package:tickets/app/config/app_typeface.dart';
 import 'package:tickets/presentation/main/data/enum/color.dart';
 import 'package:tickets/presentation/widget/tickets.dart';
 import 'package:tickets/presentation/widget/tickets_button.dart';
+import 'package:tickets/presentation/widget/tickets_dialog.dart';
 
 import '../controller/make_ticket_controller.dart';
 
@@ -243,7 +244,7 @@ class _SelectTicketLayoutView extends GetView<MakeTicketController> {
                       padding: EdgeInsets.symmetric(horizontal: 24.w),
                       child: TicketsButton(
                         "티켓 만들기",
-                        onTap: () => controller.selectLayoutTabIndex.value = 1,
+                        onTap: () async => await showTicketsDialog(context),
                         color: AppColor.primaryNormal,
                       ),
                     ),

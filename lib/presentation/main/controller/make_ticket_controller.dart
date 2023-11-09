@@ -1,7 +1,13 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide FormData, MultipartFile;
+import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tickets/app/data/builder/dio_builder.dart';
+import 'package:tickets/presentation/main/controller/ticket_controller.dart';
 import 'package:tickets/presentation/main/data/enum/category.dart';
 import 'package:tickets/presentation/main/data/enum/color.dart';
 import 'package:tickets/presentation/main/view/select_ticket_layout_screen.dart';
@@ -51,6 +57,7 @@ class MakeTicketController extends GetxController {
   final TextEditingController seatController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   final RxInt selectedColor = 0.obs;
+  final RxBool isPrivate = false.obs;
 
   Future<void> getImage() async {
     final ImagePicker picker = ImagePicker();
@@ -71,6 +78,52 @@ class MakeTicketController extends GetxController {
     priceController.clear();
     selectLayoutTabIndex.value = 0;
     selectedType.value = 0;
+  }
+
+  Future<void> uploadTicket() async {
+    try {
+      var data = FormData.fromMap({
+        'image': [await MultipartFile.fromFile(imageFile.value!.path, filename: imageFile.value!.name)],
+        'request': MultipartFile.fromString(
+          jsonEncode({
+            'title': titleController.text,
+            'ticketDate': selectedDate.value.toIso8601String(),
+            'rating': selectedRating.value,
+            'memo': memoController.text,
+            'seat': seatController.text,
+            'location': locationController.text,
+            'price': priceController.text.isNotEmpty ? int.parse(priceController.text) : null,
+            'friend': friendController.text,
+            'color': ColorType.values[selectedColor.value].id,
+            'categoryName': selectedCategory.value.name,
+            'ticketType': selectedType.value,
+            'layoutType': selectedLayout.value,
+            'isPrivate': isPrivate.value ? "PRIVATE" : "PUBLIC",
+          }),
+          contentType: MediaType('application', 'json'),
+        ),
+      });
+
+      data.files.add(MapEntry(
+        'image',
+        await MultipartFile.fromFile(imageFile.value!.path, filename: imageFile.value!.name),
+      ));
+
+      var response = await TicketsDio().post(
+        '/tickets',
+        options: Options(
+          headers: {'Content-Type': 'multipart/form-data', 'Accept': '*/*'},
+        ),
+        data: data,
+      );
+
+      if (response.statusCode == 201) {
+        await Get.find<TicketController>().getTicket();
+      }
+    } on DioException catch (e) {
+      print(e.response!.data);
+      print(e.response!.requestOptions.data);
+    }
   }
 
   // Layout
