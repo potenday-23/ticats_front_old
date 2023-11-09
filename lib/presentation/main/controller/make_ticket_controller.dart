@@ -10,6 +10,7 @@ import 'package:tickets/app/data/builder/dio_builder.dart';
 import 'package:tickets/presentation/main/controller/ticket_controller.dart';
 import 'package:tickets/presentation/main/data/enum/category.dart';
 import 'package:tickets/presentation/main/data/enum/color.dart';
+import 'package:tickets/presentation/main/view/save_ticket_screen.dart';
 import 'package:tickets/presentation/main/view/select_ticket_layout_screen.dart';
 
 import '../data/model/category_model.dart';
@@ -23,6 +24,7 @@ class MakeTicketController extends GetxController {
     MyTicketScreen(),
     RegisterTicketScreen(),
     SelectTicketLayoutScreen(),
+    SaveTicketScreen(),
   ];
 
   final RxInt currentIndex = 0.obs;
@@ -119,6 +121,11 @@ class MakeTicketController extends GetxController {
 
       if (response.statusCode == 201) {
         await Get.find<TicketController>().getTicket();
+        await Get.find<TicketController>().getMyTicket();
+
+        Get.back();
+
+        currentIndex.value = 3;
       }
     } on DioException catch (e) {
       print(e.response!.data);

@@ -30,6 +30,8 @@ dependencies:
   kakao_flutter_sdk_user: ^1.6.1
   path_provider: ^2.1.1
   permission_handler: ^11.0.1
+  screenshot: ^2.1.0
+  share_plus: ^7.2.1
   stacked_card_carousel: ^0.0.4
   the_apple_sign_in: ^1.1.1
 
