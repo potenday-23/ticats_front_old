@@ -89,3 +89,74 @@ showTicketsDialog(BuildContext context) async {
     },
   );
 }
+
+showReportDialog(BuildContext context) async {
+  return await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Stack(
+        children: [
+          AlertDialog(
+            contentPadding: EdgeInsets.zero,
+            insetPadding: const EdgeInsets.symmetric(horizontal: 24.0),
+            scrollable: true,
+            surfaceTintColor: Colors.white,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.r)),
+            elevation: 0,
+            content: Padding(
+              padding: EdgeInsets.only(top: 36.h),
+              child: SizedBox(
+                width: double.maxFinite,
+                child: Column(
+                  children: [
+                    Text("티켓이 많이 불편하셨나요?\n해당 티켓을 신고하시겠어요?", style: AppTypeFace.smallBold, textAlign: TextAlign.center),
+                    SizedBox(height: 36.h),
+                    Row(
+                      children: [
+                        Flexible(
+                          flex: 4,
+                          child: Container(
+                            height: 56.h,
+                            decoration: BoxDecoration(
+                              color: AppColor.grayE5,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(14.r),
+                              ),
+                            ),
+                            child: Center(
+                              child: Text("취소", style: AppTypeFace.smallBold),
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          flex: 6,
+                          child: Container(
+                            height: 56.h,
+                            decoration: BoxDecoration(
+                              color: AppColor.systemBlue,
+                              borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(14.r),
+                              ),
+                            ),
+                            child: Center(
+                              child: Text("신고 메일 보내기", style: AppTypeFace.smallBold.copyWith(color: Colors.white)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned.fill(
+            left: 50.w,
+            top: -200.h,
+            child: Align(alignment: Alignment.centerLeft, child: SvgPicture.asset('assets/cats/cat_eyes.svg')),
+          ),
+        ],
+      );
+    },
+  );
+}
