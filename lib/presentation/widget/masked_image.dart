@@ -2,6 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_cache_manager/file.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart' as http;
 
 class MaskedImage extends StatelessWidget {
@@ -32,8 +35,13 @@ class MaskedImage extends StatelessWidget {
     late ByteData data;
 
     if (imageUrl != null) {
-      http.Response reponse = await http.get(Uri.parse(imageUrl));
-      data = reponse.bodyBytes.buffer.asByteData();
+      File file = await DefaultCacheManager().getSingleFile(imageUrl);
+
+      if (!await file.exists()) {
+        await DefaultCacheManager().downloadFile(imageUrl);
+      }
+
+      data = await file.readAsBytes().then((value) => value.buffer.asByteData());
     } else {
       data = await rootBundle.load(imagePath!);
     }
