@@ -51,25 +51,29 @@ showTicketsDialog(BuildContext context) async {
                       ],
                     ),
                     SizedBox(height: 6.h),
-                    GestureDetector(
-                      onTap: () async {
-                        await Get.find<MakeTicketController>().uploadTicket();
-                      },
-                      child: Container(
-                        width: double.maxFinite,
-                        height: 56.h,
-                        decoration: BoxDecoration(
-                          color: AppColor.primaryDark,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(14.r),
-                            bottomRight: Radius.circular(14.r),
+                    GetX<MakeTicketController>(builder: (controller) {
+                      return GestureDetector(
+                        onTap: () async {
+                          await controller.uploadTicket();
+                        },
+                        child: Container(
+                          width: double.maxFinite,
+                          height: 56.h,
+                          decoration: BoxDecoration(
+                            color: AppColor.primaryDark,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(14.r),
+                              bottomRight: Radius.circular(14.r),
+                            ),
+                          ),
+                          child: Center(
+                            child: controller.isUploading.value
+                                ? const CircularProgressIndicator()
+                                : Text("확인", style: AppTypeFace.smallBold.copyWith(color: Colors.white)),
                           ),
                         ),
-                        child: Center(
-                          child: Text("확인", style: AppTypeFace.smallBold.copyWith(color: Colors.white)),
-                        ),
-                      ),
-                    ),
+                      );
+                    }),
                   ],
                 ),
               ),
