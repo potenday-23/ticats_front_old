@@ -61,6 +61,8 @@ class MakeTicketController extends GetxController {
   final RxInt selectedColor = 0.obs;
   final RxBool isPrivate = false.obs;
 
+  final RxBool isUploading = false.obs;
+
   Future<void> getImage() async {
     final ImagePicker picker = ImagePicker();
 
@@ -83,6 +85,8 @@ class MakeTicketController extends GetxController {
   }
 
   Future<void> uploadTicket() async {
+    isUploading.value = true;
+
     try {
       var data = FormData.fromMap({
         'image': [await MultipartFile.fromFile(imageFile.value!.path, filename: imageFile.value!.name)],
@@ -130,6 +134,8 @@ class MakeTicketController extends GetxController {
     } on DioException catch (e) {
       print(e.response!.data);
       print(e.response!.requestOptions.data);
+    } finally {
+      isUploading.value = false;
     }
   }
 
