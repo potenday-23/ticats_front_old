@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_cast
+
 import 'package:get/get.dart';
 import 'package:tickets/app/data/builder/dio_builder.dart';
 import 'package:tickets/app/service/auth_service.dart';
@@ -5,6 +7,7 @@ import 'package:tickets/app/service/auth_service.dart';
 import '../data/model/ticket_model.dart';
 
 class TicketController extends GetxController {
+  // Ticket
   RxList<TicketModel> ticketList = <TicketModel>[].obs;
   RxList<TicketModel> myTicketList = <TicketModel>[].obs;
 

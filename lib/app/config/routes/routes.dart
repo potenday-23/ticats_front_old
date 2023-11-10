@@ -9,6 +9,8 @@ import 'package:tickets/presentation/authentication/view/term_agree_page.dart';
 import 'package:tickets/presentation/authentication/view/term_detail_page.dart';
 import 'package:tickets/presentation/main/controller/main_binding.dart';
 import 'package:tickets/presentation/main/view/main_page.dart';
+import 'package:tickets/presentation/main/view/ticket_search_page.dart';
+import 'package:tickets/presentation/main/view/ticket_search_result_page.dart';
 
 class Routes {
   static List<GetPage> routes = [
@@ -46,6 +48,16 @@ class Routes {
       name: RoutePath.main,
       page: () => const MainPage(),
       binding: HomeBinding(),
+    ),
+
+    // Main - Ticket Search
+    GetPage(
+      name: RoutePath.ticketSearch,
+      page: () => const TicketSearchPage(),
+    ),
+    GetPage(
+      name: RoutePath.ticketSearchResult,
+      page: () => const TicketSearchResultPage(),
     ),
   ];
 }

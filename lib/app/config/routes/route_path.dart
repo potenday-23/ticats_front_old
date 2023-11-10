@@ -11,4 +11,6 @@ class RoutePath {
 
   // Main
   static const String main = '/main';
+  static const String ticketSearch = '/ticketSearch';
+  static const String ticketSearchResult = '/ticketSearchResult';
 }
