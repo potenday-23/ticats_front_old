@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/file.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:http/http.dart' as http;
 
 class MaskedImage extends StatelessWidget {
   final String? imageUrl;
