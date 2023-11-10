@@ -15,7 +15,7 @@ class TicketsBottomNavBar extends GetView<MainController> {
       child: Obx(
         () {
           return SizedBox(
-            height: 66.h,
+            height: 66.w,
             child: Column(
               children: [
                 const Divider(height: 1, color: Color(0xFFE5E5EA)),
