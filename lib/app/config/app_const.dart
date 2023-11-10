@@ -1,3 +1,3 @@
 class AppConst {
-  static const String apiUrl = 'http://13.124.32.19:8080/api';
+  static const String apiUrl = 'https://www.ticats.r-e.kr/api';
 }
