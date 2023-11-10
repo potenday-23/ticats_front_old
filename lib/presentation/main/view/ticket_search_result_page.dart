@@ -1,0 +1,190 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:tickets/app/config/app_color.dart';
+import 'package:tickets/app/config/app_typeface.dart';
+import 'package:tickets/app/config/routes/route_path.dart';
+import 'package:tickets/app/data/builder/dio_builder.dart';
+import 'package:tickets/presentation/main/controller/ticket_controller.dart';
+import 'package:tickets/presentation/widget/tickets.dart';
+import 'package:tickets/presentation/widget/tickets_button.dart';
+import 'package:tickets/presentation/widget/tickets_dialog.dart';
+
+import '../controller/ticket_search_controller.dart';
+import '../data/model/ticket_model.dart';
+
+class TicketSearchResultPage extends GetView<TicketSearchController> {
+  const TicketSearchResultPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        // Misc
+        automaticallyImplyLeading: false,
+        toolbarHeight: 56.w,
+        scrolledUnderElevation: 0,
+
+        // Empty leading
+        leadingWidth: 0,
+
+        // Title
+        title: const _FilterTitleTextField(),
+        titleSpacing: 0,
+
+        // Actions
+        actions: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(16.w, 16.h, 24.w, 16.h),
+            child: GestureDetector(
+              onTap: () => Get.offNamedUntil(
+                RoutePath.main,
+                (route) => route.isFirst,
+              ),
+              child: Icon(Icons.close, size: 24.w),
+            ),
+          ),
+        ],
+      ),
+      body: Obx(
+        () {
+          if (controller.isLoading.value) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (controller.searchResultList.isEmpty) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "검색 결과가 없어요.\n다른 티켓을 검색해보세요!",
+                    style: AppTypeFace.mediumBold.copyWith(color: AppColor.gray98),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 70.h),
+                  SvgPicture.asset(
+                    'assets/cats/cat_empty.svg',
+                    width: 105.99336.w,
+                    height: 170.99687.h,
+                  )
+                ],
+              ),
+            );
+          } else {
+            return SingleChildScrollView(
+              physics: const ClampingScrollPhysics(),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+                child: Wrap(
+                  spacing: 16.w,
+                  children: [
+                    for (int i = 0; i < controller.searchResultList.length; i++) ...[
+                      Stack(children: [
+                        if (controller.searchResultList[i].ticketType == '0') ...[
+                          if (controller.searchResultList[i].layoutType == "0")
+                            Ticket1Small(controller.searchResultList[i], width: 163.w, height: 273.w),
+                          if (controller.searchResultList[i].layoutType == "1")
+                            Ticket1Medium(controller.searchResultList[i], width: 163.w, height: 273.w),
+                          if (controller.searchResultList[i].layoutType == "2")
+                            Ticket1Large(controller.searchResultList[i], width: 163.w, height: 273.w),
+                        ] else if (controller.searchResultList[i].ticketType == '1') ...[
+                          if (controller.searchResultList[i].layoutType == "0")
+                            Ticket2Small(controller.searchResultList[i], width: 163.w, height: 273.w),
+                          if (controller.searchResultList[i].layoutType == "1")
+                            Ticket2Medium(controller.searchResultList[i], width: 163.w, height: 273.w),
+                          if (controller.searchResultList[i].layoutType == "2")
+                            Ticket2Large(controller.searchResultList[i], width: 163.w, height: 273.w),
+                        ] else if (controller.searchResultList[i].ticketType == '2') ...[
+                          if (controller.searchResultList[i].layoutType == "0")
+                            Ticket3Small(controller.searchResultList[i], width: 163.w, height: 273.w),
+                          if (controller.searchResultList[i].layoutType == "1")
+                            Ticket3Medium(controller.searchResultList[i], width: 163.w, height: 273.w),
+                          if (controller.searchResultList[i].layoutType == "2")
+                            Ticket3Large(controller.searchResultList[i], width: 163.w, height: 273.w),
+                        ],
+                        Positioned.fill(
+                          top: 20.h,
+                          right: 20.w,
+                          child: GestureDetector(
+                            onTap: () async {
+                              await TicketsDio().post('/likes/${controller.searchResultList[i].id}');
+
+                              if (controller.searchResultList[i].isLike == null) {
+                                controller.searchResultList[i] = controller.searchResultList[i].copyWith(isLike: true);
+                              } else {
+                                controller.searchResultList[i] =
+                                    controller.searchResultList[i].copyWith(isLike: !controller.searchResultList[i].isLike!);
+                              }
+
+                              await Get.find<TicketController>().getTicket();
+                              await Get.find<TicketController>().getMyTicket();
+                            },
+                            child: Align(
+                              alignment: Alignment.topRight,
+                              child: controller.searchResultList[i].isLike != null && controller.searchResultList[i].isLike!
+                                  ? SvgPicture.asset('assets/icons/heart_fill.svg')
+                                  : SvgPicture.asset('assets/icons/heart.svg'),
+                            ),
+                          ),
+                        ),
+                        Positioned.fill(
+                          bottom: 20.h,
+                          left: 20.w,
+                          child: GestureDetector(
+                              onTap: () async {
+                                await showReportDialog(context);
+                              },
+                              child: Align(alignment: Alignment.bottomLeft, child: SvgPicture.asset('assets/icons/report.svg'))),
+                        ),
+                      ]),
+                    ],
+                  ],
+                ),
+              ),
+            );
+          }
+        },
+      ),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        child: TicketsButton(
+          "다시 검색",
+          onTap: () => Get.back(),
+          color: AppColor.primaryNormal,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
+  }
+}
+
+class _FilterTitleTextField extends GetView<TicketSearchController> {
+  const _FilterTitleTextField();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 24.0),
+      child: SizedBox(
+        height: 48.h,
+        child: TextField(
+          controller: controller.searchTextController,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12.r),
+              borderSide: BorderSide.none,
+            ),
+            filled: true,
+            fillColor: AppColor.grayF2,
+            hintText: '티켓을 검색해보세요!',
+            hintStyle: AppTypeFace.xsmallSemiBold.copyWith(color: AppColor.gray8E),
+            prefixIconConstraints: BoxConstraints(minWidth: 60.w),
+            prefixIcon: Icon(Icons.search, size: 24.w),
+            prefixIconColor: Colors.black,
+            contentPadding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 11.h),
+          ),
+        ),
+      ),
+    );
+  }
+}

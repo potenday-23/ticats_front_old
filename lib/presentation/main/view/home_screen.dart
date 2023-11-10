@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
+import 'package:tickets/app/config/routes/route_path.dart';
 
 import '../controller/home_controller.dart';
 import 'widget/tickets_card_view.dart';
@@ -16,7 +17,7 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 56.h,
+        toolbarHeight: 56.w,
         leading: Padding(
           padding: EdgeInsets.only(left: 24.w),
           child: SvgPicture.asset('assets/icons/ticats_logo.svg', width: 42.w, height: 42.w),
@@ -47,7 +48,9 @@ class HomeScreen extends GetView<HomeController> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
-            child: GestureDetector(onTap: () {}, child: SvgPicture.asset('assets/icons/filter.svg', width: 24.w, height: 24.w)),
+            child: GestureDetector(
+                onTap: () => Get.toNamed(RoutePath.ticketSearch),
+                child: SvgPicture.asset('assets/icons/filter.svg', width: 24.w, height: 24.w)),
           ),
         ],
       ),

@@ -35,6 +35,7 @@ dependencies:
   screenshot: ^2.1.0
   share_plus: ^7.2.1
   stacked_card_carousel: ^0.0.4
+  table_calendar: ^3.0.9
   the_apple_sign_in: ^1.1.1
 
 dev_dependencies:
