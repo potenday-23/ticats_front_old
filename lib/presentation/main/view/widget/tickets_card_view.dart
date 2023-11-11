@@ -24,7 +24,7 @@ class TicketsCardView extends GetView<TicketController> {
         } else if (ticketList.isEmpty) {
           return const NoTicketWidget();
         } else {
-          return StackedCardCarousel(type: StackedCardCarouselType.fadeOutStack, initialOffset: 20.w, spaceBetweenItems: 600.w, items: [
+          return StackedCardCarousel(type: StackedCardCarouselType.fadeOutStack, initialOffset: 10.w, spaceBetweenItems: 595.w, items: [
             for (TicketModel ticket in ticketList) ...[
               if (ticket.ticketType == '0') ...[
                 if (ticket.layoutType == "0") Ticket1Small(ticket),
