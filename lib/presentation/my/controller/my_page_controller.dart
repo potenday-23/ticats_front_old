@@ -72,7 +72,7 @@ class MyPageController extends GetxController {
 
       if (profileImage.value != null && profileImage.value!.path.isNotEmpty) {
         data.files.add(MapEntry(
-          'image',
+          'profileImage',
           await MultipartFile.fromFile(profileImage.value!.path, filename: profileImage.value!.name),
         ));
       }
