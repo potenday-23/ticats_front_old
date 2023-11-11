@@ -45,7 +45,9 @@ class MyTicketScreen extends GetView<TicketController> {
                     ),
                   ),
                   SizedBox(height: 138.h),
-                  const NoTicketWidget(),
+                  const NoTicketWidget(
+                    text: "티켓 만들기가 처음이세요?\n+ 버튼을 눌러\n나만의 티켓을 만들어보세요!",
+                  ),
                 ],
               );
             } else {

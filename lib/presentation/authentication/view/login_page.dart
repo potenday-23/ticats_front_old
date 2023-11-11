@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget {
             ),
             SizedBox(height: 45.h),
             Text(
-              "티켓츠에 오신 것을\n환영합니다!",
+              "티캣츠에 오신 것을\n환영합니다!",
               style: AppTypeFace.mediumBold,
               textAlign: TextAlign.center,
             ),
