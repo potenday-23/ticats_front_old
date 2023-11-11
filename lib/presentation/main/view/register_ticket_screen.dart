@@ -27,7 +27,10 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
         scrolledUnderElevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset("assets/icons/arrow_left.svg", width: 24.w, height: 24.w),
-          onPressed: () => controller.currentIndex.value = 0,
+          onPressed: () {
+            controller.resetTicket();
+            controller.currentIndex.value = 0;
+          },
         ),
         title: const Text("티켓 만들기"),
         titleTextStyle: AppTypeFace.smallBold.copyWith(color: Colors.black),

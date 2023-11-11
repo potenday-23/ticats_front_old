@@ -146,7 +146,7 @@ class Ticket1Medium extends StatelessWidget {
                             width: 296.w,
                             height: 344.w,
                             child: MaskedImage(
-                              imageUrl: ticket.imageUrl,
+                              imageUrl: ticket.id != null && ticket.imagePath == null ? ticket.imageUrl : null,
                               imagePath: ticket.imagePath,
                               mask: 'assets/tickets/mask_1_medium.png',
                             ),
@@ -240,7 +240,7 @@ class Ticket1Large extends StatelessWidget {
                             width: 343.w,
                             height: 388.w,
                             child: MaskedImage(
-                              imageUrl: ticket.imageUrl,
+                              imageUrl: ticket.id != null && ticket.imagePath == null ? ticket.imageUrl : null,
                               imagePath: ticket.imagePath,
                               mask: 'assets/tickets/mask_1_large.png',
                             ),
@@ -327,7 +327,7 @@ class Ticket2Small extends StatelessWidget {
                         child: Stack(
                           children: [
                             MaskedImage(
-                              imageUrl: ticket.imageUrl,
+                              imageUrl: ticket.id != null && ticket.imagePath == null ? ticket.imageUrl : null,
                               imagePath: ticket.imagePath,
                               mask: 'assets/tickets/mask_2_small.png',
                             ),
@@ -430,7 +430,7 @@ class Ticket2Medium extends StatelessWidget {
                         child: Stack(
                           children: [
                             MaskedImage(
-                              imageUrl: ticket.imageUrl,
+                              imageUrl: ticket.id != null && ticket.imagePath == null ? ticket.imageUrl : null,
                               imagePath: ticket.imagePath,
                               mask: 'assets/tickets/mask_2_medium.png',
                             ),
@@ -524,7 +524,7 @@ class Ticket2Large extends StatelessWidget {
                             width: 342.w,
                             height: 408.w,
                             child: MaskedImage(
-                              imageUrl: ticket.imageUrl,
+                              imageUrl: ticket.id != null && ticket.imagePath == null ? ticket.imageUrl : null,
                               imagePath: ticket.imagePath,
                               mask: 'assets/tickets/mask_2_large.png',
                             ),
@@ -613,7 +613,7 @@ class Ticket3Small extends StatelessWidget {
                         child: Stack(
                           children: [
                             MaskedImage(
-                              imageUrl: ticket.imageUrl,
+                              imageUrl: ticket.id != null && ticket.imagePath == null ? ticket.imageUrl : null,
                               imagePath: ticket.imagePath,
                               mask: 'assets/tickets/mask_3_small.png',
                             ),
@@ -718,7 +718,7 @@ class Ticket3Medium extends StatelessWidget {
                             width: 302.w,
                             height: 345.w,
                             child: MaskedImage(
-                              imageUrl: ticket.imageUrl,
+                              imageUrl: ticket.id != null && ticket.imagePath == null ? ticket.imageUrl : null,
                               imagePath: ticket.imagePath,
                               mask: 'assets/tickets/mask_3_medium.png',
                             ),
@@ -818,7 +818,7 @@ class Ticket3Large extends StatelessWidget {
                             width: 337.w,
                             height: 414.w,
                             child: MaskedImage(
-                              imageUrl: ticket.imageUrl,
+                              imageUrl: ticket.id != null && ticket.imagePath == null ? ticket.imageUrl : null,
                               imagePath: ticket.imagePath,
                               mask: 'assets/tickets/mask_3_large.png',
                             ),
