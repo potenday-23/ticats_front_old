@@ -10,6 +10,8 @@ class TicketController extends GetxController {
   // Ticket
   RxList<TicketModel> ticketList = <TicketModel>[].obs;
   RxList<TicketModel> myTicketList = <TicketModel>[].obs;
+  RxList<TicketModel> likeTicketList = <TicketModel>[].obs;
+  RxList<int> likeTicketIdList = <int>[].obs;
 
   RxBool isTicketLoading = false.obs;
   RxBool isMyTicketLoading = false.obs;
@@ -19,6 +21,7 @@ class TicketController extends GetxController {
     super.onInit();
 
     await getTicket();
+    await getLike();
     await getMyTicket();
   }
 
@@ -53,6 +56,21 @@ class TicketController extends GetxController {
       print(e);
     } finally {
       isMyTicketLoading.value = false;
+    }
+  }
+
+  Future<void> getLike() async {
+    if (AuthService.to.user?.token?.accessToken == null) return;
+
+    try {
+      var response = await TicketsDio().get('/likes');
+
+      if (response.statusCode == 200) {
+        likeTicketList.assignAll(response.data.map<TicketModel>((e) => TicketModel.fromJson(e)).toList());
+        likeTicketIdList.assignAll(response.data.map<int>((e) => TicketModel.fromJson(e).id!).toList());
+      }
+    } on Exception catch (e) {
+      print(e);
     }
   }
 }
