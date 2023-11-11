@@ -47,6 +47,8 @@ class RegisterController extends GetxController {
       );
 
       if (response.statusCode == 201) {
+        AuthService.to.setUser(UserModel.fromJson(response.data));
+
         Get.offAllNamed(RoutePath.main);
       }
     } on DioException catch (e) {
