@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
 import 'package:tickets/app/service/auth_service.dart';
@@ -57,7 +58,7 @@ class LoginPage extends StatelessWidget {
             ],
             _SSOButtonWidget(
               "로그인 없이 둘러보기",
-              onTap: () {},
+              onTap: () => Fluttertoast.showToast(msg: "해당 기능은 준비 중이에요."),
               color: AppColor.grayC7,
               textColor: Colors.white,
             ),
