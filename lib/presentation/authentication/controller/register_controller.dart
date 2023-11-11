@@ -152,11 +152,11 @@ class RegisterController extends GetxController {
       if (e.response != null) {
         print(e.response!.data);
         print(e.response!.headers);
+        nickNameErrorText.value = e.response!.data['message'];
       } else {
         print(e.requestOptions);
         print(e.message);
       }
-      Get.snackbar("에러!", "회원가입에 실패하였습니다.\n관리자에게 문의해주세요.");
     }
   }
 }
