@@ -31,28 +31,32 @@ showTicketsDialog(BuildContext context) async {
                   children: [
                     Text("짜잔~\n티켓을 완성했어요!", style: AppTypeFace.smallBold, textAlign: TextAlign.center),
                     SizedBox(height: 14.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(11.w),
-                          child: SizedBox(
-                            width: 24.w,
-                            height: 24.w,
-                            child: Obx(
-                              () => Checkbox(
-                                activeColor: AppColor.systemBlue,
-                                value: Get.find<MakeTicketController>().isPrivate.value,
-                                onChanged: (value) => Get.find<MakeTicketController>().isPrivate.value = value!,
+                    GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () => Get.find<MakeTicketController>().isPrivate.value = !Get.find<MakeTicketController>().isPrivate.value,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(11.w),
+                            child: SizedBox(
+                              width: 24.w,
+                              height: 24.w,
+                              child: Obx(
+                                () => Checkbox(
+                                  activeColor: AppColor.systemBlue,
+                                  value: Get.find<MakeTicketController>().isPrivate.value,
+                                  onChanged: (value) => Get.find<MakeTicketController>().isPrivate.value = value!,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(right: 24.w),
-                          child: Text("나만 보기", style: AppTypeFace.smallSemiBold),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsets.only(right: 24.w),
+                            child: Text("나만 보기", style: AppTypeFace.smallSemiBold),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 6.h),
                     GetX<MakeTicketController>(builder: (controller) {
