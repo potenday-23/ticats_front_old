@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_cast
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -53,8 +55,6 @@ class TicketSearchController extends GetxController {
       if (response.statusCode == 200) {
         searchResultList.assignAll(response.data.map<TicketModel>((e) => TicketModel.fromJson(e)).toList());
       }
-
-      print(searchResultList);
     } on DioException catch (e) {
       print(e.message);
     } finally {

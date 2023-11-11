@@ -78,50 +78,37 @@ class TicketSearchResultPage extends GetView<TicketSearchController> {
                 child: Wrap(
                   spacing: 16.w,
                   children: [
-                    for (int i = 0; i < controller.searchResultList.length; i++) ...[
+                    for (TicketModel ticket in controller.searchResultList) ...[
                       Stack(children: [
-                        if (controller.searchResultList[i].ticketType == '0') ...[
-                          if (controller.searchResultList[i].layoutType == "0")
-                            Ticket1Small(controller.searchResultList[i], width: 163.w, height: 273.w),
-                          if (controller.searchResultList[i].layoutType == "1")
-                            Ticket1Medium(controller.searchResultList[i], width: 163.w, height: 273.w),
-                          if (controller.searchResultList[i].layoutType == "2")
-                            Ticket1Large(controller.searchResultList[i], width: 163.w, height: 273.w),
-                        ] else if (controller.searchResultList[i].ticketType == '1') ...[
-                          if (controller.searchResultList[i].layoutType == "0")
-                            Ticket2Small(controller.searchResultList[i], width: 163.w, height: 273.w),
-                          if (controller.searchResultList[i].layoutType == "1")
-                            Ticket2Medium(controller.searchResultList[i], width: 163.w, height: 273.w),
-                          if (controller.searchResultList[i].layoutType == "2")
-                            Ticket2Large(controller.searchResultList[i], width: 163.w, height: 273.w),
-                        ] else if (controller.searchResultList[i].ticketType == '2') ...[
-                          if (controller.searchResultList[i].layoutType == "0")
-                            Ticket3Small(controller.searchResultList[i], width: 163.w, height: 273.w),
-                          if (controller.searchResultList[i].layoutType == "1")
-                            Ticket3Medium(controller.searchResultList[i], width: 163.w, height: 273.w),
-                          if (controller.searchResultList[i].layoutType == "2")
-                            Ticket3Large(controller.searchResultList[i], width: 163.w, height: 273.w),
+                        if (ticket.ticketType == '0') ...[
+                          if (ticket.layoutType == "0") Ticket1Small(ticket, width: 163.w, height: 273.w),
+                          if (ticket.layoutType == "1") Ticket1Medium(ticket, width: 163.w, height: 273.w),
+                          if (ticket.layoutType == "2") Ticket1Large(ticket, width: 163.w, height: 273.w),
+                        ] else if (ticket.ticketType == '1') ...[
+                          if (ticket.layoutType == "0") Ticket2Small(ticket, width: 163.w, height: 273.w),
+                          if (ticket.layoutType == "1") Ticket2Medium(ticket, width: 163.w, height: 273.w),
+                          if (ticket.layoutType == "2") Ticket2Large(ticket, width: 163.w, height: 273.w),
+                        ] else if (ticket.ticketType == '2') ...[
+                          if (ticket.layoutType == "0") Ticket3Small(ticket, width: 163.w, height: 273.w),
+                          if (ticket.layoutType == "1") Ticket3Medium(ticket, width: 163.w, height: 273.w),
+                          if (ticket.layoutType == "2") Ticket3Large(ticket, width: 163.w, height: 273.w),
                         ],
                         Positioned.fill(
-                          top: 20.h,
+                          top: 30.h,
                           right: 20.w,
                           child: GestureDetector(
                             onTap: () async {
-                              await TicketsDio().post('/likes/${controller.searchResultList[i].id}');
+                              await TicketsDio().post('/likes/${ticket.id}');
 
-                              if (controller.searchResultList[i].isLike == null) {
-                                controller.searchResultList[i] = controller.searchResultList[i].copyWith(isLike: true);
+                              if (Get.find<TicketController>().likeTicketList.contains(ticket)) {
+                                Get.find<TicketController>().likeTicketList.remove(ticket);
                               } else {
-                                controller.searchResultList[i] =
-                                    controller.searchResultList[i].copyWith(isLike: !controller.searchResultList[i].isLike!);
+                                Get.find<TicketController>().likeTicketList.add(ticket);
                               }
-
-                              await Get.find<TicketController>().getTicket();
-                              await Get.find<TicketController>().getMyTicket();
                             },
                             child: Align(
                               alignment: Alignment.topRight,
-                              child: controller.searchResultList[i].isLike != null && controller.searchResultList[i].isLike!
+                              child: Get.find<TicketController>().likeTicketList.contains(ticket)
                                   ? SvgPicture.asset('assets/icons/heart_fill.svg')
                                   : SvgPicture.asset('assets/icons/heart.svg'),
                             ),

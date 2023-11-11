@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:stacked_card_carousel/stacked_card_carousel.dart';
+import 'package:tickets/app/data/builder/dio_builder.dart';
 import 'package:tickets/presentation/main/data/model/ticket_model.dart';
 import 'package:tickets/presentation/widget/tickets.dart';
+import 'package:tickets/presentation/widget/tickets_dialog.dart';
 
 import '../../controller/ticket_controller.dart';
 import 'no_ticket_widget.dart';
@@ -26,20 +29,72 @@ class TicketsCardView extends GetView<TicketController> {
         } else {
           return StackedCardCarousel(type: StackedCardCarouselType.fadeOutStack, initialOffset: 10.w, spaceBetweenItems: 595.w, items: [
             for (TicketModel ticket in ticketList) ...[
-              if (ticket.ticketType == '0') ...[
-                if (ticket.layoutType == "0") Ticket1Small(ticket),
-                if (ticket.layoutType == "1") Ticket1Medium(ticket),
-                if (ticket.layoutType == "2") Ticket1Large(ticket),
-              ] else if (ticket.ticketType == '1') ...[
-                if (ticket.layoutType == "0") Ticket2Small(ticket),
-                if (ticket.layoutType == "1") Ticket2Medium(ticket),
-                if (ticket.layoutType == "2") Ticket2Large(ticket),
-              ] else if (ticket.ticketType == '2') ...[
-                if (ticket.layoutType == "0") Ticket3Small(ticket),
-                if (ticket.layoutType == "1") Ticket3Medium(ticket),
-                if (ticket.layoutType == "2") Ticket3Large(ticket),
-              ]
-            ]
+              SizedBox(
+                width: 365.w,
+                height: 611.w,
+                child: Stack(
+                  children: [
+                    if (ticket.ticketType == '0') ...[
+                      if (ticket.layoutType == "0") Ticket1Small(ticket),
+                      if (ticket.layoutType == "1") Ticket1Medium(ticket),
+                      if (ticket.layoutType == "2") Ticket1Large(ticket),
+                    ] else if (ticket.ticketType == '1') ...[
+                      if (ticket.layoutType == "0") Ticket2Small(ticket),
+                      if (ticket.layoutType == "1") Ticket2Medium(ticket),
+                      if (ticket.layoutType == "2") Ticket2Large(ticket),
+                    ] else if (ticket.ticketType == '2') ...[
+                      if (ticket.layoutType == "0") Ticket3Small(ticket),
+                      if (ticket.layoutType == "1") Ticket3Medium(ticket),
+                      if (ticket.layoutType == "2") Ticket3Large(ticket),
+                    ],
+                    Positioned.fill(
+                      top: 60.h,
+                      right: 30.w,
+                      child: GestureDetector(
+                        onTap: () async {
+                          await TicketsDio().post('/likes/${ticket.id}');
+
+                          if (controller.likeTicketIdList.contains(ticket.id!)) {
+                            controller.likeTicketIdList.remove(ticket.id);
+                            controller.likeTicketList.where((e) => e.id == ticket.id).forEach((e) => controller.likeTicketList.remove(e));
+                          } else {
+                            controller.likeTicketIdList.add(ticket.id!);
+                            controller.likeTicketList.add(ticket);
+                          }
+                        },
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: controller.likeTicketIdList.contains(ticket.id)
+                              ? SvgPicture.asset(
+                                  'assets/icons/heart_fill.svg',
+                                  width: 24.w,
+                                )
+                              : SvgPicture.asset(
+                                  'assets/icons/heart.svg',
+                                  height: 24.w,
+                                ),
+                        ),
+                      ),
+                    ),
+                    Positioned.fill(
+                      bottom: 60.w,
+                      left: 40.w,
+                      child: GestureDetector(
+                          onTap: () async {
+                            await showReportDialog(context);
+                          },
+                          child: Align(
+                              alignment: Alignment.bottomLeft,
+                              child: SvgPicture.asset(
+                                'assets/icons/report.svg',
+                                width: 20.w,
+                                height: 20.w,
+                              ))),
+                    ),
+                  ],
+                ),
+              )
+            ],
           ]);
         }
       },
