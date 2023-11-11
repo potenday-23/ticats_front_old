@@ -156,7 +156,7 @@ class TermAgreePage extends GetView<RegisterController> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => Get.toNamed(RoutePath.termDetail, arguments: TermType.locationTermOfUse),
+                      onTap: () => Get.toNamed(RoutePath.termDetail, arguments: TermType.servicePushAgree),
                       child: Text("보기", style: AppTypeFace.xsmallMedium.copyWith(color: AppColor.gray8E)),
                     ),
                   ],

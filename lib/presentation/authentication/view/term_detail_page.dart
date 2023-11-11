@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:tickets/app/config/app_typeface.dart';
 
 enum TermType {
-  locationTermOfUse("서비스 알림 수신 동의", fileName: "location_term_of_use"),
+  servicePushAgree("서비스 알림 수신 동의", fileName: "service_push"),
   marketingConsent("마케팅 정보 수신 및 이용 동의", fileName: "marketing_consent"),
   privacyPolicy("개인정보 처리방침 및 수집이용 동의", fileName: "privacy_policy"),
   termOfUse("서비스 이용약관", fileName: "term_of_use");
