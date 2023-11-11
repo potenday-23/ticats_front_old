@@ -61,7 +61,7 @@ class RegisterProfilePage extends StatelessWidget {
                   color: controller.nickNameLength.value >= 2 && !controller.hasNickError ? null : AppColor.grayC7,
                 ),
               ),
-              SizedBox(height: 86.h),
+              SizedBox(height: 56.h),
             ],
           ),
         ),

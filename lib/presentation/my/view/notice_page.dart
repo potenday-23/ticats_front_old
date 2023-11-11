@@ -32,6 +32,7 @@ class NoticePage extends StatelessWidget {
             child: GestureDetector(onTap: () => Get.back(), child: Icon(Icons.close, size: 24.w)),
           ),
         ],
+        centerTitle: true,
         title: Text("공지사항", style: AppTypeFace.smallBold),
       ),
       body: Padding(

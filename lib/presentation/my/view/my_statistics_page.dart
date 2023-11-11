@@ -40,6 +40,7 @@ class MyStatisticsPage extends GetView<MyPageController> {
             ),
           ],
         ),
+        centerTitle: true,
         title: Text("통계 보기", style: AppTypeFace.smallBold),
       ),
       body: Obx(() {

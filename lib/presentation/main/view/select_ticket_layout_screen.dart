@@ -25,6 +25,7 @@ class SelectTicketLayoutScreen extends GetView<MakeTicketController> {
           icon: SvgPicture.asset("assets/icons/arrow_left.svg", width: 24.w, height: 24.w),
           onPressed: () => controller.currentIndex.value = 1,
         ),
+        centerTitle: true,
         title: const Text("티켓 만들기"),
         titleTextStyle: AppTypeFace.smallBold.copyWith(color: Colors.black),
       ),

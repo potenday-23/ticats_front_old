@@ -201,7 +201,7 @@ class TermAgreePage extends GetView<RegisterController> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.fromLTRB(24.w, 0, 24.w, 86.h),
+        padding: EdgeInsets.fromLTRB(24.w, 0, 24.w, 56.h),
         child: Obx(
           () => TicketsButton(
             "다음",
