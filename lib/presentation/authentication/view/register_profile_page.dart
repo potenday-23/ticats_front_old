@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
+import 'package:tickets/app/extension/input_validate.dart';
 import 'package:tickets/presentation/authentication/controller/register_controller.dart';
 import 'package:tickets/presentation/authentication/view/widget/register_app_bar.dart';
 import 'package:tickets/presentation/widget/tickets_button.dart';
@@ -55,10 +56,8 @@ class RegisterProfilePage extends StatelessWidget {
               GetX<RegisterController>(
                 builder: (controller) => TicketsButton(
                   "티캣츠 시작하기",
-                  onTap: controller.nickNameLength.value >= 2 && !controller.hasNickError
-                      ? () async => await controller.registerNewUser()
-                      : null,
-                  color: controller.nickNameLength.value >= 2 && !controller.hasNickError ? null : AppColor.grayC7,
+                  onTap: !controller.hasNickError ? () async => await controller.registerNewUser() : null,
+                  color: !controller.hasNickError ? null : AppColor.grayC7,
                 ),
               ),
               SizedBox(height: 56.h),
@@ -94,8 +93,10 @@ class _NickNameTextField extends GetView<RegisterController> {
               onChanged: (value) {
                 controller.nickNameLength.value = value.length;
 
-                if (value.length > 10) {
+                if (value.isNotEmpty && value.length > 10) {
                   controller.nickNameErrorText.value = "10자 이하로 입력해주세요.";
+                } else if (!controller.nicknameController.text.isValidNick()) {
+                  controller.nickNameErrorText.value = "닉네임을 확인해주세요.";
                 } else {
                   controller.nickNameErrorText.value = "";
                 }
