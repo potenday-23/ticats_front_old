@@ -88,6 +88,8 @@ class MyPageController extends GetxController {
       if (response.statusCode == 200) {
         AuthService.to.setUser(AuthService.to.user!.copyWith(member: Member.fromJson(response.data)));
         Fluttertoast.showToast(msg: "프로필이 수정되었습니다.");
+      } else {
+        nickNameErrorText.value = response.data['message'];
       }
     } on DioException catch (e) {
       print(e.error);
