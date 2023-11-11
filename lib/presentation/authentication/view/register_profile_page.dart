@@ -21,7 +21,7 @@ class RegisterProfilePage extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 36.h),
-              Text("사용하실 닉네임과 사진을 추가해주세요.", style: AppTypeFace.smallBold),
+              Text("사용하실 닉네임과 프로필을 추가해주세요.", style: AppTypeFace.smallBold),
               SizedBox(height: 42.h),
               GetX<RegisterController>(
                 builder: (controller) {

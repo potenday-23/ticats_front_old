@@ -37,7 +37,7 @@ class SelectCategoryPage extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 36.h),
-                Text("어떤 문화생활에 관심이 있으신가요?", style: AppTypeFace.smallBold),
+                Text("관심 있는 카테고리를 선택해주세요.", style: AppTypeFace.smallBold),
                 SizedBox(height: 40.h),
                 Wrap(
                   spacing: 16.w,
