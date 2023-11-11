@@ -59,8 +59,8 @@ class HomeScreen extends GetView<HomeController> {
         () => TabBarView(
           controller: controller.tabController,
           children: [
-            controller.allViewIndex.value == 0 ? const TicketsCardView(isAllTicket: true) : const TicketsGridView(isAllTicket: true),
-            controller.myViewIndex.value == 0 ? const TicketsCardView() : const TicketsGridView(),
+            controller.allViewIndex.value == 0 ? TicketsCardView(isAllTicket: true) : const TicketsGridView(isAllTicket: true),
+            controller.myViewIndex.value == 0 ? TicketsCardView() : const TicketsGridView(),
           ],
         ),
       ),
