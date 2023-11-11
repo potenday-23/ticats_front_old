@@ -11,7 +11,7 @@ class RegisterAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       automaticallyImplyLeading: false,
       scrolledUnderElevation: 0,
-      toolbarHeight: 56.h,
+      toolbarHeight: 56.w,
       leadingWidth: 80.w,
       leading: Row(
         children: [
@@ -26,5 +26,5 @@ class RegisterAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(56.h);
+  Size get preferredSize => Size.fromHeight(56.w);
 }
