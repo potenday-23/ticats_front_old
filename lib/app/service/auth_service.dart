@@ -32,7 +32,12 @@ class AuthService extends GetxService {
 
     await getUser();
     if (_userOAuth != null) {
-      await login();
+      // Skip login if token not expires
+      if (_user != null && _user!.member!.updatedDate!.isAfter(DateTime.now().subtract(const Duration(days: 1)))) {
+        Get.offAllNamed(RoutePath.main);
+      } else {
+        await login();
+      }
     }
   }
 
