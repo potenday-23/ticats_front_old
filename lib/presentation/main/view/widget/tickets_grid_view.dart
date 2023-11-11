@@ -78,7 +78,7 @@ class TicketsGridView extends GetView<TicketController> {
                           left: 20.w,
                           child: GestureDetector(
                               onTap: () async {
-                                await showReportDialog(context);
+                                await showReportDialog(context, ticket);
                               },
                               child: Align(
                                 alignment: Alignment.bottomLeft,

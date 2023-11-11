@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
+import 'package:tickets/app/service/auth_service.dart';
 import 'package:tickets/presentation/main/controller/make_ticket_controller.dart';
+import 'package:tickets/presentation/main/data/model/ticket_model.dart';
 
 showTicketsDialog(BuildContext context) async {
   return await showDialog(
@@ -90,7 +93,7 @@ showTicketsDialog(BuildContext context) async {
   );
 }
 
-showReportDialog(BuildContext context) async {
+showReportDialog(BuildContext context, TicketModel ticket) async {
   return await showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -124,7 +127,7 @@ showReportDialog(BuildContext context) async {
                               ),
                             ),
                             child: Center(
-                              child: Text("취소", style: AppTypeFace.smallBold),
+                              child: GestureDetector(onTap: () => Get.back(), child: Text("취소", style: AppTypeFace.smallSemiBold)),
                             ),
                           ),
                         ),
@@ -139,7 +142,19 @@ showReportDialog(BuildContext context) async {
                               ),
                             ),
                             child: Center(
-                              child: Text("신고 메일 보내기", style: AppTypeFace.smallBold.copyWith(color: Colors.white)),
+                              child: GestureDetector(
+                                onTap: () async {
+                                  final Email emailBody = Email(
+                                    body:
+                                        '신고 사유:\n\n\n-----------------\n신고자: ${AuthService.to.user!.member!.nickname}\n신고자 아이디: ${AuthService.to.user!.member!.id}\n신고 티켓: ${ticket.id}',
+                                    subject: '[티캣츠 티켓 신고]',
+                                    recipients: ['wonhee0619@gmail.com'],
+                                    isHTML: false,
+                                  );
+                                  await FlutterEmailSender.send(emailBody);
+                                },
+                                child: Text("신고 메일 보내기", style: AppTypeFace.smallSemiBold.copyWith(color: Colors.white)),
+                              ),
                             ),
                           ),
                         ),
