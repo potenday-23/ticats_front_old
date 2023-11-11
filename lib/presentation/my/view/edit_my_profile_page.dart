@@ -58,7 +58,13 @@ class EditMyProfilePage extends GetView<MyPageController> {
                         height: 120.w,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(120.r),
-                          child: CachedNetworkImage(imageUrl: AuthService.to.user!.member!.profileUrl!, fit: BoxFit.cover),
+                          child: CachedNetworkImage(
+                            imageUrl: AuthService.to.user!.member!.profileUrl!,
+                            fit: BoxFit.cover,
+                            errorWidget: (context, url, error) {
+                              return SvgPicture.asset('assets/icons/user.svg', width: 56.w, height: 56.w);
+                            },
+                          ),
                         ),
                       );
                     }
