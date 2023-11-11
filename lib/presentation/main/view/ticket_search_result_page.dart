@@ -195,6 +195,7 @@ class _FilterTitleTextField extends GetView<TicketSearchController> {
             prefixIconColor: Colors.black,
             contentPadding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 11.h),
           ),
+          style: AppTypeFace.xsmallSemiBold,
         ),
       ),
     );
