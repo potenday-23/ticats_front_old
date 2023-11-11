@@ -43,7 +43,7 @@ class Ticket1Small extends StatelessWidget {
                         child: Stack(
                           children: [
                             MaskedImage(
-                              imageUrl: ticket.imageUrl,
+                              imageUrl: ticket.id != null && ticket.imagePath == null ? ticket.imageUrl : null,
                               imagePath: ticket.imagePath,
                               mask: 'assets/tickets/mask_1_small.png',
                             ),

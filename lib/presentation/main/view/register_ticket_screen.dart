@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -39,24 +41,31 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
               SizedBox(height: 32.h),
               Center(
                 child: Obx(
-                  () => Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () async {
-                          await controller.getImage();
-                        },
-                        child: controller.imageFile.value!.path.isNotEmpty
-                            ? Image.asset(controller.imageFile.value!.path)
-                            : Column(
-                                children: [
-                                  SvgPicture.asset('assets/icons/image.svg', width: 110.w, height: 110.w),
-                                  SizedBox(height: 11.h),
-                                  Text("이미지는 2:3 비율을 추천드려요!", style: AppTypeFace.smallBold.copyWith(color: AppColor.gray98)),
-                                  SizedBox(height: 15.h),
-                                ],
-                              ),
-                      ),
-                    ],
+                  () => GestureDetector(
+                    onTap: () async {
+                      await controller.getImage();
+                    },
+                    child: Column(
+                      children: [
+                        if (controller.makeTicketModel.value.id != null) ...[
+                          if (controller.imageFile.value!.path.isEmpty)
+                            CachedNetworkImage(imageUrl: controller.makeTicketModel.value.imageUrl!)
+                          else
+                            Image.asset(controller.imageFile.value!.path)
+                        ] else ...[
+                          controller.imageFile.value!.path.isNotEmpty
+                              ? Image.asset(controller.imageFile.value!.path)
+                              : Column(
+                                  children: [
+                                    SvgPicture.asset('assets/icons/image.svg', width: 110.w, height: 110.w),
+                                    SizedBox(height: 11.h),
+                                    Text("이미지는 2:3 비율을 추천드려요!", style: AppTypeFace.smallBold.copyWith(color: AppColor.gray98)),
+                                    SizedBox(height: 15.h),
+                                  ],
+                                ),
+                        ]
+                      ],
+                    ),
                   ),
                 ),
               ),
