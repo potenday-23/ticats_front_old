@@ -82,7 +82,7 @@ class TicketsCardView extends GetView<TicketController> {
                       left: 40.w,
                       child: GestureDetector(
                           onTap: () async {
-                            await showReportDialog(context);
+                            await showReportDialog(context, ticket);
                           },
                           child: Align(
                               alignment: Alignment.bottomLeft,
