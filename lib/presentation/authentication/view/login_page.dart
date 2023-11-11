@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
                 await AuthService.to.loginWithApple();
                 await AuthService.to.login();
               },
-              "애플로 시작하기",
+              "APPLE로 시작하기",
               color: Colors.black,
               textColor: Colors.white,
               icon: "apple.svg",
