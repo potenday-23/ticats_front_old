@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
 import 'package:tickets/app/config/routes/route_path.dart';
+import 'package:tickets/app/extension/input_validate.dart';
 import 'package:tickets/app/service/auth_service.dart';
 import 'package:tickets/presentation/widget/tickets_button.dart';
 
@@ -106,7 +107,13 @@ class EditMyProfilePage extends GetView<MyPageController> {
             SafeArea(
               child: Padding(
                 padding: EdgeInsets.only(bottom: 16.h),
-                child: TicketsButton("저장하기", onTap: () async => await controller.patchProfile()),
+                child: Obx(
+                  () => TicketsButton(
+                    "저장하기",
+                    color: !controller.hasNickError ? null : AppColor.grayC7,
+                    onTap: !controller.hasNickError ? () async => await controller.patchProfile() : null,
+                  ),
+                ),
               ),
             ),
           ],
@@ -140,8 +147,10 @@ class _NickNameTextField extends GetView<MyPageController> {
               onChanged: (value) {
                 controller.nickNameLength.value = value.length;
 
-                if (value.length > 10) {
+                if (value.isNotEmpty && value.length > 10) {
                   controller.nickNameErrorText.value = "10자 이하로 입력해주세요.";
+                } else if (!controller.nicknameController.text.isValidNick()) {
+                  controller.nickNameErrorText.value = "닉네임을 확인해주세요.";
                 } else {
                   controller.nickNameErrorText.value = "";
                 }
