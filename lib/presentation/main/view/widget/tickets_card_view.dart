@@ -33,12 +33,12 @@ class TicketsCardView extends GetView<TicketController> {
             type: StackedCardCarouselType.fadeOutStack,
             pageController: pageController,
             initialOffset: 10.w,
-            spaceBetweenItems: 595.w,
+            spaceBetweenItems: 595.h,
             items: [
               for (TicketModel ticket in ticketList) ...[
                 SizedBox(
                   width: 365.w,
-                  height: 611.w,
+                  height: 611.h,
                   child: Stack(
                     children: [
                       if (ticket.ticketType == '0') ...[
