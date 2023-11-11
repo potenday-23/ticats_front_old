@@ -10,7 +10,7 @@ class MainPage extends GetView<MainController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(() => controller.pages[controller.selectedIndex]),
+      body: WillPopScope(onWillPop: () => Future.value(false), child: Obx(() => controller.pages[controller.selectedIndex])),
       bottomNavigationBar: const TicketsBottomNavBar(),
     );
   }
