@@ -134,7 +134,7 @@ class MakeTicketController extends GetxController {
             jsonEncode({
               'imageUrl': makeTicketModel.value.imageUrl,
               'title': titleController.text,
-              'ticketDate': selectedDate.value.toIso8601String(),
+              'ticketDate': DateFormat('yyyy-MM-ddTHH:mm:ss').format(selectedDate.value),
               'rating': selectedRating.value,
               'memo': memoController.text,
               'seat': seatController.text,
@@ -187,7 +187,7 @@ class MakeTicketController extends GetxController {
           'request': MultipartFile.fromString(
             jsonEncode({
               'title': titleController.text,
-              'ticketDate': DateFormat('yyyy-MM-ddTH:mm:ss').format(selectedDate.value),
+              'ticketDate': DateFormat('yyyy-MM-ddTHH:mm:ss').format(selectedDate.value),
               'rating': selectedRating.value,
               'memo': memoController.text,
               'seat': seatController.text,

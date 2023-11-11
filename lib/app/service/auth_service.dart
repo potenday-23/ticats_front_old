@@ -121,6 +121,8 @@ class AuthService extends GetxService {
 
     _user = null;
     _userOAuth = null;
+
+    Get.offAllNamed(RoutePath.login);
   }
 
   Future<void> loginWithKakao() async {

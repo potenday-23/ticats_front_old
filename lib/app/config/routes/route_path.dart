@@ -13,4 +13,13 @@ class RoutePath {
   static const String main = '/main';
   static const String ticketSearch = '/ticketSearch';
   static const String ticketSearchResult = '/ticketSearchResult';
+
+  // MyPage
+  static const String changeCategory = '/changeCategory';
+  static const String editMyProfile = '/editMyProfile';
+  static const String inquery = '/inquery';
+  static const String myLike = '/myLike';
+  static const String myStatistics = '/myStatics';
+  static const String notice = '/notice';
+  static const String resign = '/resign';
 }

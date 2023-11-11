@@ -11,6 +11,13 @@ import 'package:tickets/presentation/main/controller/main_binding.dart';
 import 'package:tickets/presentation/main/view/main_page.dart';
 import 'package:tickets/presentation/main/view/ticket_search_page.dart';
 import 'package:tickets/presentation/main/view/ticket_search_result_page.dart';
+import 'package:tickets/presentation/my/view/change_category_page.dart';
+import 'package:tickets/presentation/my/view/edit_my_profile_page.dart';
+import 'package:tickets/presentation/my/view/inquery_page.dart';
+import 'package:tickets/presentation/my/view/my_like_page.dart';
+import 'package:tickets/presentation/my/view/my_statistics_page.dart';
+import 'package:tickets/presentation/my/view/notice_page.dart';
+import 'package:tickets/presentation/my/view/resign_page.dart';
 
 class Routes {
   static List<GetPage> routes = [
@@ -58,6 +65,36 @@ class Routes {
     GetPage(
       name: RoutePath.ticketSearchResult,
       page: () => const TicketSearchResultPage(),
+    ),
+
+    // MyPage
+    GetPage(
+      name: RoutePath.changeCategory,
+      page: () => const ChangeCategoryPage(),
+    ),
+    GetPage(
+      name: RoutePath.editMyProfile,
+      page: () => const EditMyProfilePage(),
+    ),
+    GetPage(
+      name: RoutePath.inquery,
+      page: () => const InqueryPage(),
+    ),
+    GetPage(
+      name: RoutePath.myLike,
+      page: () => const MyLikePage(),
+    ),
+    GetPage(
+      name: RoutePath.myStatistics,
+      page: () => const MyStatisticsPage(),
+    ),
+    GetPage(
+      name: RoutePath.notice,
+      page: () => const NoticePage(),
+    ),
+    GetPage(
+      name: RoutePath.resign,
+      page: () => const ResignPage(),
     ),
   ];
 }
