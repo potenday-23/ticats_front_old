@@ -5,7 +5,9 @@ import 'package:tickets/app/config/app_color.dart';
 import 'package:tickets/app/config/app_typeface.dart';
 
 class NoTicketWidget extends StatelessWidget {
-  const NoTicketWidget({super.key});
+  const NoTicketWidget({super.key, this.text});
+
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class NoTicketWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "아직 등록한 티켓이 없어요.\n내 티켓 만들기를 선택해\n티켓을 등록해보세요!",
+          text ?? "아직 등록한 티켓이 없어요.\n내 티켓 만들기를 선택해\n티켓을 등록해보세요!",
           style: AppTypeFace.mediumBold.copyWith(color: AppColor.gray98),
           textAlign: TextAlign.center,
         ),
