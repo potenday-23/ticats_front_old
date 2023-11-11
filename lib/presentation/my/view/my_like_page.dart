@@ -30,6 +30,7 @@ class MyLikePage extends GetView<TicketController> {
             ),
           ],
         ),
+        centerTitle: true,
         title: Text("좋아요한 티켓", style: AppTypeFace.smallBold),
       ),
       body: SingleChildScrollView(

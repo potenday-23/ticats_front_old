@@ -1,3 +1,4 @@
+import 'dart:io' as io;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class MaskedImage extends StatelessWidget {
 
       data = await file.readAsBytes().then((value) => value.buffer.asByteData());
     } else {
-      data = await rootBundle.load(imagePath!);
+      data = io.File(imagePath!).readAsBytesSync().buffer.asByteData();
     }
 
     ByteData maskData = await rootBundle.load(mask);

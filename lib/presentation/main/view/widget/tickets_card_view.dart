@@ -24,7 +24,7 @@ class TicketsCardView extends GetView<TicketController> {
       () {
         List<TicketModel> ticketList = isAllTicket ? controller.ticketList : controller.myTicketList;
 
-        if (controller.isTicketLoading.value || controller.isMyTicketLoading.value) {
+        if (isAllTicket && controller.isTicketLoading.value || (!isAllTicket && controller.isMyTicketLoading.value)) {
           return const Center(child: CircularProgressIndicator());
         } else if (ticketList.isEmpty) {
           return const NoTicketWidget();

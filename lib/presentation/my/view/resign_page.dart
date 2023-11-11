@@ -23,6 +23,7 @@ class ResignPage extends GetView<MyPageController> {
             child: GestureDetector(onTap: () => Get.back(), child: Icon(Icons.close, size: 24.w)),
           ),
         ],
+        centerTitle: true,
         title: Text("회원 탈퇴", style: AppTypeFace.smallBold),
       ),
       body: Padding(

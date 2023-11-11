@@ -23,6 +23,7 @@ class InqueryPage extends StatelessWidget {
             child: GestureDetector(onTap: () => Get.back(), child: Icon(Icons.close, size: 24.w)),
           ),
         ],
+        centerTitle: true,
         title: Text("문의하기", style: AppTypeFace.smallBold),
       ),
       body: Padding(

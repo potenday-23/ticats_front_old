@@ -19,6 +19,7 @@ class MyPageScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
+        centerTitle: true,
         title: const Text("마이페이지"),
         titleTextStyle: AppTypeFace.smallBold.copyWith(color: Colors.black),
       ),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,6 +33,7 @@ class EditMyProfilePage extends GetView<MyPageController> {
             ),
           ],
         ),
+        centerTitle: true,
         title: Text("프로필 수정", style: AppTypeFace.smallBold),
       ),
       body: Padding(
@@ -49,7 +52,7 @@ class EditMyProfilePage extends GetView<MyPageController> {
                         height: 120.w,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(120.r),
-                          child: Image.asset(controller.profileImage.value!.path, fit: BoxFit.cover),
+                          child: Image.file(File(controller.profileImage.value!.path), fit: BoxFit.cover),
                         ),
                       );
                     } else {

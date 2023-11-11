@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +34,7 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
             controller.currentIndex.value = 0;
           },
         ),
+        centerTitle: true,
         title: const Text("티켓 만들기"),
         titleTextStyle: AppTypeFace.smallBold.copyWith(color: Colors.black),
       ),
@@ -54,10 +57,10 @@ class RegisterTicketScreen extends GetView<MakeTicketController> {
                           if (controller.imageFile.value!.path.isEmpty)
                             CachedNetworkImage(imageUrl: controller.makeTicketModel.value.imageUrl!)
                           else
-                            Image.asset(controller.imageFile.value!.path)
+                            Image.file(File(controller.imageFile.value!.path))
                         ] else ...[
                           controller.imageFile.value!.path.isNotEmpty
-                              ? Image.asset(controller.imageFile.value!.path)
+                              ? Image.file(File(controller.imageFile.value!.path))
                               : Column(
                                   children: [
                                     SvgPicture.asset('assets/icons/image.svg', width: 110.w, height: 110.w),

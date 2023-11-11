@@ -89,7 +89,7 @@ showTicketsDialog(BuildContext context) async {
           ),
           Positioned.fill(
             left: 50.w,
-            top: -320.h,
+            top: -340.h,
             child: Align(alignment: Alignment.center, child: SvgPicture.asset('assets/cats/cat_enjoy.svg')),
           ),
         ],
@@ -173,7 +173,7 @@ showReportDialog(BuildContext context, TicketModel ticket) async {
           ),
           Positioned.fill(
             left: 50.w,
-            top: -200.h,
+            top: -210.h,
             child: Align(alignment: Alignment.centerLeft, child: SvgPicture.asset('assets/cats/cat_eyes.svg')),
           ),
         ],

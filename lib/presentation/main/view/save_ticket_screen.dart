@@ -32,6 +32,7 @@ class SaveTicketScreen extends GetView<MakeTicketController> {
             },
           ),
         ],
+        centerTitle: true,
         title: const Text("티켓 만들기"),
         titleTextStyle: AppTypeFace.smallBold.copyWith(color: Colors.black),
       ),

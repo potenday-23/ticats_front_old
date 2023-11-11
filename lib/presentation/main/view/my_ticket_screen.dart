@@ -21,6 +21,7 @@ class MyTicketScreen extends GetView<TicketController> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         toolbarHeight: 56.h,
+        centerTitle: true,
         title: const Text("티켓 등록"),
         titleTextStyle: AppTypeFace.smallBold.copyWith(color: Colors.black),
       ),

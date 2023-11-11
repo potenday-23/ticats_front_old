@@ -241,7 +241,7 @@ class MakeTicketController extends GetxController {
   final RxInt selectedLayout = 0.obs;
 
   void saveTicket() {
-    if (titleController.text.isEmpty && (imageFile.value!.path.isEmpty || makeTicketModel.value.imageUrl != null)) {
+    if (titleController.text.isEmpty || (imageFile.value!.path.isEmpty && makeTicketModel.value.imageUrl == null)) {
       Fluttertoast.showToast(msg: "필수 항목을 확인해주세요!");
       return;
     }

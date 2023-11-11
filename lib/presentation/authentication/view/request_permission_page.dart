@@ -47,7 +47,7 @@ class RequestPermissionPage extends StatelessWidget {
                 await Get.find<RegisterController>().requestGalleryPermission();
                 Get.toNamed(RoutePath.registerProfile);
               }),
-              SizedBox(height: 86.h),
+              SizedBox(height: 56.h),
             ],
           ),
         ),
