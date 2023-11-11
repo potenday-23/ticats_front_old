@@ -124,41 +124,46 @@ showReportDialog(BuildContext context, TicketModel ticket) async {
                       children: [
                         Flexible(
                           flex: 4,
-                          child: Container(
-                            height: 56.h,
-                            decoration: BoxDecoration(
-                              color: AppColor.grayE5,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(14.r),
+                          child: GestureDetector(
+                            behavior: HitTestBehavior.translucent,
+                            onTap: () => Get.back(),
+                            child: Container(
+                              height: 56.h,
+                              decoration: BoxDecoration(
+                                color: AppColor.grayE5,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(14.r),
+                                ),
                               ),
-                            ),
-                            child: Center(
-                              child: GestureDetector(onTap: () => Get.back(), child: Text("취소", style: AppTypeFace.smallSemiBold)),
+                              child: Center(
+                                child: Text("취소", style: AppTypeFace.smallSemiBold),
+                              ),
                             ),
                           ),
                         ),
                         Flexible(
                           flex: 6,
-                          child: Container(
-                            height: 56.h,
-                            decoration: BoxDecoration(
-                              color: AppColor.systemBlue,
-                              borderRadius: BorderRadius.only(
-                                bottomRight: Radius.circular(14.r),
+                          child: GestureDetector(
+                            behavior: HitTestBehavior.translucent,
+                            onTap: () async {
+                              final Email emailBody = Email(
+                                body:
+                                    '신고 사유:\n\n\n-----------------\n신고자: ${AuthService.to.user!.member!.nickname}\n신고자 아이디: ${AuthService.to.user!.member!.id}\n신고 티켓: ${ticket.id}',
+                                subject: '[티캣츠 티켓 신고]',
+                                recipients: ['wonhee0619@gmail.com'],
+                                isHTML: false,
+                              );
+                              await FlutterEmailSender.send(emailBody);
+                            },
+                            child: Container(
+                              height: 56.h,
+                              decoration: BoxDecoration(
+                                color: AppColor.systemBlue,
+                                borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(14.r),
+                                ),
                               ),
-                            ),
-                            child: Center(
-                              child: GestureDetector(
-                                onTap: () async {
-                                  final Email emailBody = Email(
-                                    body:
-                                        '신고 사유:\n\n\n-----------------\n신고자: ${AuthService.to.user!.member!.nickname}\n신고자 아이디: ${AuthService.to.user!.member!.id}\n신고 티켓: ${ticket.id}',
-                                    subject: '[티캣츠 티켓 신고]',
-                                    recipients: ['wonhee0619@gmail.com'],
-                                    isHTML: false,
-                                  );
-                                  await FlutterEmailSender.send(emailBody);
-                                },
+                              child: Center(
                                 child: Text("신고 메일 보내기", style: AppTypeFace.smallSemiBold.copyWith(color: Colors.white)),
                               ),
                             ),
