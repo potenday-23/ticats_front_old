@@ -77,8 +77,8 @@ class MyLikePage extends GetView<TicketController> {
                             child: Align(
                               alignment: Alignment.topRight,
                               child: Get.find<TicketController>().likeTicketIdList.contains(ticket.id!)
-                                  ? SvgPicture.asset('assets/icons/heart_fill.svg')
-                                  : SvgPicture.asset('assets/icons/heart.svg'),
+                                  ? SvgPicture.asset('assets/icons/heart_fill.svg', width: 24.w)
+                                  : SvgPicture.asset('assets/icons/heart.svg', width: 24.w),
                             ),
                           ),
                         ),
