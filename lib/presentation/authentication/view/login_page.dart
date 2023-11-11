@@ -14,15 +14,11 @@ class LoginPage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 59.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: Container(
-                height: 250.h,
-                color: Colors.grey,
-              ),
+            SizedBox(height: 91.h),
+            Center(
+              child: SvgPicture.asset('assets/cats/cat_lick.svg', width: 114.57.w, height: 185.h),
             ),
-            SizedBox(height: 12.h),
+            SizedBox(height: 45.h),
             Text(
               "티켓츠에 오신 것을\n환영합니다!",
               style: AppTypeFace.mediumBold,

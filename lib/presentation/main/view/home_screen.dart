@@ -20,8 +20,9 @@ class HomeScreen extends GetView<HomeController> {
         toolbarHeight: 56.w,
         leading: Padding(
           padding: EdgeInsets.only(left: 24.w),
-          child: SvgPicture.asset('assets/icons/ticats_logo.svg', width: 42.w, height: 42.w),
+          child: Image.asset('assets/icons/ticats_logo.png', width: 42.w, height: 42.w, fit: BoxFit.fitWidth),
         ),
+        leadingWidth: 66.w,
         title: TabBar(
           // Misc
           controller: controller.tabController,
