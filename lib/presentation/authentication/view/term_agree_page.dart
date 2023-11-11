@@ -195,15 +195,19 @@ class TermAgreePage extends GetView<RegisterController> {
                     ),
                   ],
                 ),
-                SizedBox(height: 195.h),
-                TicketsButton(
-                  "다음",
-                  color: controller.isRequiredAgree ? AppColor.systemBlue : AppColor.grayC7,
-                  onTap: controller.isRequiredAgree ? () => Get.toNamed(RoutePath.requestPermssion) : null,
-                ),
               ]);
             }),
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.fromLTRB(24.w, 0, 24.w, 86.h),
+        child: Obx(
+          () => TicketsButton(
+            "다음",
+            color: controller.isRequiredAgree ? AppColor.systemBlue : AppColor.grayC7,
+            onTap: controller.isRequiredAgree ? () => Get.toNamed(RoutePath.requestPermssion) : null,
+          ),
         ),
       ),
     );

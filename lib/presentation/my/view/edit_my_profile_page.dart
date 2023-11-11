@@ -20,7 +20,7 @@ class EditMyProfilePage extends GetView<MyPageController> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
-        toolbarHeight: 56.h,
+        toolbarHeight: 56.w,
         leadingWidth: 80.w,
         leading: Row(
           children: [

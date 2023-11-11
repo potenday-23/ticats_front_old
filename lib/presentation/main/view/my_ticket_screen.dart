@@ -33,14 +33,17 @@ class MyTicketScreen extends GetView<TicketController> {
             } else if (controller.myTicketList.isEmpty) {
               return Column(
                 children: [
-                  GestureDetector(
-                    onTap: () => Get.find<MakeTicketController>().currentIndex.value = 1,
-                    child: Container(
-                      width: 342.w,
-                      height: 70.h,
-                      color: AppColor.grayF2,
-                      child: Center(
-                        child: SvgPicture.asset("assets/icons/add.svg", width: 34.w, height: 34.w),
+                  SizedBox(height: 32.h),
+                  Center(
+                    child: GestureDetector(
+                      onTap: () => Get.find<MakeTicketController>().currentIndex.value = 1,
+                      child: Container(
+                        width: 342.w,
+                        height: 70.w,
+                        color: AppColor.grayF2,
+                        child: Center(
+                          child: SvgPicture.asset("assets/icons/add.svg", width: 34.w, height: 34.w),
+                        ),
                       ),
                     ),
                   ),
@@ -109,7 +112,7 @@ class MyTicketScreen extends GetView<TicketController> {
                             );
                           },
                         ),
-                        SizedBox(height: 70.h),
+                        SizedBox(height: 70.w),
                       ],
                     ),
                   ),

@@ -16,7 +16,7 @@ class ChangeCategoryPage extends GetView<MyPageController> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0,
-        toolbarHeight: 56.h,
+        toolbarHeight: 56.w,
         leadingWidth: 80.w,
         leading: Row(
           children: [
@@ -72,7 +72,7 @@ class _CategorySelectWidget extends GetView<MyPageController> {
         child: controller.categoryList.contains(category.name)
             ? Stack(
                 children: [
-                  Image.asset('assets/categories/${category.imageName}_select.png', width: 163.w, height: 121.h, fit: BoxFit.cover),
+                  Image.asset('assets/categories/${category.imageName}_select.png', width: 163.w, height: 121.h, fit: BoxFit.contain),
                   Positioned.fill(
                     child: Align(
                       alignment: Alignment.center,
@@ -83,7 +83,7 @@ class _CategorySelectWidget extends GetView<MyPageController> {
               )
             : Stack(
                 children: [
-                  Image.asset('assets/categories/${category.imageName}.png', width: 163.w, height: 121.h, fit: BoxFit.cover),
+                  Image.asset('assets/categories/${category.imageName}.png', width: 163.w, height: 121.h, fit: BoxFit.contain),
                   Positioned.fill(
                     child: Align(
                       alignment: Alignment.center,

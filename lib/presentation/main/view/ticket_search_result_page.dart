@@ -158,7 +158,7 @@ class TicketSearchResultPage extends GetView<TicketSearchController> {
         },
       ),
       floatingActionButton: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
         child: TicketsButton(
           "다시 검색",
           onTap: () => Get.back(),

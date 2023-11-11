@@ -48,7 +48,10 @@ class InqueryPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: SafeArea(
-        child: _CopyEmailWidget(),
+        child: Padding(
+          padding: EdgeInsets.only(bottom: 16.w),
+          child: _CopyEmailWidget(),
+        ),
       ),
     );
   }
