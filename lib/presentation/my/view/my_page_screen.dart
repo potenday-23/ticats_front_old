@@ -143,6 +143,9 @@ class _MyProfileWidget extends StatelessWidget {
                   width: 56.w,
                   height: 56.w,
                   fit: BoxFit.cover,
+                  errorWidget: (context, url, error) {
+                    return SvgPicture.asset('assets/icons/user.svg', width: 56.w, height: 56.w);
+                  },
                 ),
               ),
               SizedBox(width: 18.w),
