@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -40,17 +42,19 @@ class LoginPage extends StatelessWidget {
               icon: "kakao.svg",
             ),
             SizedBox(height: 16.h),
-            _SSOButtonWidget(
-              onTap: () async {
-                await AuthService.to.loginWithApple();
-                await AuthService.to.login();
-              },
-              "APPLE로 시작하기",
-              color: Colors.black,
-              textColor: Colors.white,
-              icon: "apple.svg",
-            ),
-            SizedBox(height: 16.h),
+            if (Platform.isIOS) ...[
+              _SSOButtonWidget(
+                onTap: () async {
+                  await AuthService.to.loginWithApple();
+                  await AuthService.to.login();
+                },
+                "APPLE로 시작하기",
+                color: Colors.black,
+                textColor: Colors.white,
+                icon: "apple.svg",
+              ),
+              SizedBox(height: 16.h),
+            ],
             _SSOButtonWidget(
               "로그인 없이 둘러보기",
               onTap: () {},
