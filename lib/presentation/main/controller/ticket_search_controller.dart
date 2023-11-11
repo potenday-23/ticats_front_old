@@ -14,7 +14,7 @@ class TicketSearchController extends GetxController {
   // Filter
   final TextEditingController searchTextController = TextEditingController();
 
-  RxBool isOnlyMyTicket = true.obs;
+  RxBool isOnlyMyTicket = false.obs;
 
   RxList<String> categoryList = <String>[].obs;
 
@@ -48,7 +48,7 @@ class TicketSearchController extends GetxController {
       }
 
       final response = await TicketsDio().get(
-        isOnlyMyTicket.value ? '/tickets/my' : '/tickets/total',
+        '/tickets/my-total',
         queryParameters: parameter,
       );
 
