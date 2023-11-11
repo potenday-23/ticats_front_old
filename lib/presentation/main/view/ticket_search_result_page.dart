@@ -100,15 +100,18 @@ class TicketSearchResultPage extends GetView<TicketSearchController> {
                             onTap: () async {
                               await TicketsDio().post('/likes/${ticket.id}');
 
-                              if (Get.find<TicketController>().likeTicketList.contains(ticket)) {
+                              if (Get.find<TicketController>().likeTicketIdList.contains(ticket.id!)) {
+                                Get.find<TicketController>().likeTicketIdList.remove(ticket.id);
                                 Get.find<TicketController>().likeTicketList.remove(ticket);
                               } else {
+                                Get.find<TicketController>().likeTicketIdList.add(ticket.id!);
                                 Get.find<TicketController>().likeTicketList.add(ticket);
+                                Get.find<TicketController>().likeTicketList.sort((a, b) => a.id!.compareTo(b.id!));
                               }
                             },
                             child: Align(
                               alignment: Alignment.topRight,
-                              child: Get.find<TicketController>().likeTicketList.contains(ticket)
+                              child: Get.find<TicketController>().likeTicketIdList.contains(ticket.id!)
                                   ? SvgPicture.asset('assets/icons/heart_fill.svg')
                                   : SvgPicture.asset('assets/icons/heart.svg'),
                             ),

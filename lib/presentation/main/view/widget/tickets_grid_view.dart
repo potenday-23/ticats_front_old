@@ -58,12 +58,11 @@ class TicketsGridView extends GetView<TicketController> {
 
                               if (controller.likeTicketIdList.contains(ticket.id!)) {
                                 controller.likeTicketIdList.remove(ticket.id);
-                                controller.likeTicketList
-                                    .where((e) => e.id == ticket.id)
-                                    .forEach((e) => controller.likeTicketList.remove(e));
+                                controller.likeTicketList.remove(ticket);
                               } else {
                                 controller.likeTicketIdList.add(ticket.id!);
                                 controller.likeTicketList.add(ticket);
+                                controller.likeTicketList.sort((a, b) => a.id!.compareTo(b.id!));
                               }
                             },
                             child: Align(
