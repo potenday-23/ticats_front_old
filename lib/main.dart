@@ -12,7 +12,7 @@ import 'package:tickets/app/config/routes/route_path.dart';
 import 'package:tickets/app/config/routes/routes.dart';
 
 void main() async {
-  runApp(const MainApp());
+  WidgetsFlutterBinding.ensureInitialized();
 
   // Locale
   await initializeDateFormatting();
@@ -23,6 +23,8 @@ void main() async {
 
   // Initialize Kakao SDK
   KakaoSdk.init(nativeAppKey: dotenv.env['KAKAO_NATIVE_APP_KEY']!);
+
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -52,6 +54,12 @@ class MainApp extends StatelessWidget {
             appBarTheme: const AppBarTheme(backgroundColor: Colors.white, elevation: 0.0),
             scaffoldBackgroundColor: Colors.white,
           ),
+          builder: (context, child) {
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              child: child!,
+            );
+          },
           initialBinding: AppBinding(),
           initialRoute: RoutePath.login,
           getPages: Routes.routes,
